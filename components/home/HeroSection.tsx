@@ -25,8 +25,10 @@ export function HeroSection() {
         scrollToExpand="向下滚动，展开调研故事"
         textBlend
       >
-        <div className="max-w-4xl mx-auto text-center text-white">
-          <p className="text-lg md:text-xl text-white/90">{site.projectIntro}</p>
+        <div className="max-w-4xl mx-auto text-center text-foreground dark:text-white">
+          <p className="text-lg md:text-xl text-foreground/80 dark:text-white/90">
+            {site.projectIntro}
+          </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
               href="#about-section"
@@ -36,7 +38,7 @@ export function HeroSection() {
             </Link>
             <Link
               href="#timeline"
-              className="px-6 py-3 rounded-full border border-white/60 text-white hover:bg-white/10 transition-colors"
+              className="px-6 py-3 rounded-full border border-foreground/30 text-foreground hover:bg-foreground/10 dark:border-white/60 dark:text-white dark:hover:bg-white/10 transition-colors"
             >
               查看调研线路
             </Link>
