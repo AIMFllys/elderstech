@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { FloatingCanvas } from "@/components/FloatingCanvas";
 
 export const metadata: Metadata = {
   title: "智慧医养赋能计划",
@@ -27,8 +28,11 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased bg-paper dark:bg-paper-dark text-ink dark:text-ink-dark">
-        <ThemeProvider>{children}</ThemeProvider>
+      <body className="antialiased bg-paper dark:bg-paper-dark text-ink dark:text-ink-dark bg-parallax">
+        <ThemeProvider>
+          <FloatingCanvas />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

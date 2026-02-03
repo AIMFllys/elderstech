@@ -1,5 +1,14 @@
 import { BackLink } from "@/components/BackLink";
-import { stats, site } from "@/lib/data";
+import { AnimatedGradient } from "@/components/ui/animated-gradient-with-svg";
+import { stats, site, statsIntro } from "@/lib/data";
+
+const cardColors = [
+  ["#B8860B", "#E6C875", "#F6E5B6"],
+  ["#E1B84A", "#A0895C", "#F3E6CC"],
+  ["#7A5E3A", "#B89B70", "#F3E6CC"],
+  ["#C99C49", "#F1D79C", "#8A6B3F"],
+  ["#A66B2A", "#E4B87A", "#F7E1B5"],
+];
 
 export default function ResultsPage() {
   return (
@@ -11,16 +20,33 @@ export default function ResultsPage() {
           {site.title}：优秀调研报告、优秀图文视频、优秀宣传报道等成果统计与展示。
         </p>
         <section className="mb-12">
-          <h2 className="text-xl font-semibold text-hust mb-6">核心数据（上一届实践基础）</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <h2 className="text-xl font-semibold text-hust mb-2">
+            核心数据（上一届实践基础）
+          </h2>
+          <p className="text-foreground/70 mb-6">{statsIntro}</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {stats.map((item, i) => (
-              <div key={i} className="p-6 rounded-xl bg-background dark:bg-background border border-ink/10 text-center">
-                <div className="text-2xl font-bold text-hust">
-                  {item.value}
-                  <span className="text-base">{item.suffix}</span>
+              <div
+                key={i}
+                className={`relative overflow-hidden h-full rounded-2xl border border-ink/10 dark:border-ink-dark/20 bg-background/70 ${
+                  i === 0 || i === 3 ? "md:col-span-2" : ""
+                }`}
+              >
+                <AnimatedGradient
+                  colors={cardColors[i % cardColors.length]}
+                  speed={0.06}
+                  blur="medium"
+                />
+                <div className="relative z-10 p-6 md:p-8 text-foreground">
+                  <h3 className="text-sm md:text-base text-foreground/80">
+                    {item.label}
+                  </h3>
+                  <p className="text-3xl md:text-4xl font-semibold mb-2 text-foreground">
+                    {item.value}
+                    <span className="text-base ml-1">{item.suffix}</span>
+                  </p>
+                  <p className="text-sm text-foreground/70">{item.desc}</p>
                 </div>
-                <div className="text-sm font-medium mt-1">{item.label}</div>
-                <div className="text-xs text-foreground/60 mt-1">{item.desc}</div>
               </div>
             ))}
           </div>

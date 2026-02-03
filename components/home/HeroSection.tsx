@@ -1,43 +1,48 @@
 "use client";
 
-import Image from "next/image";
+import Link from "next/link";
 import { site } from "@/lib/data";
+import ScrollExpandMedia from "@/components/ui/scroll-expansion-hero";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
-const BG_IMAGE =
-  "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1920&auto=format&fit=crop";
+const HERO_MEDIA =
+  "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80";
+const HERO_BG =
+  "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=1920&q=80";
 
 export function HeroSection() {
-  const [first, second] = site.teamName.split(/\s{2,}/);
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-paper dark:bg-paper-dark text-ink dark:text-ink-dark">
-      <div className="absolute inset-0 z-0">
-        <Image
-          src={BG_IMAGE}
-          alt=""
-          fill
-          className="object-cover"
-          priority
-          unoptimized
-        />
-        <div className="absolute inset-0 bg-black/40 dark:bg-black/60" />
-      </div>
-      <div className="absolute top-6 right-6 z-20">
+    <section className="relative">
+      <div className="absolute top-6 right-6 z-30">
         <ThemeToggle />
       </div>
-      <div className="relative z-10 container mx-auto px-4 text-center">
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white drop-shadow-lg">
-          <span className="block" style={{ transform: "translateX(-0.05em)" }}>
-            {first}
-          </span>
-          <span className="block mt-2" style={{ transform: "translateX(0.05em)" }}>
-            {second || ""}
-          </span>
-        </h1>
-        <p className="mt-8 max-w-2xl mx-auto text-lg md:text-xl text-white/95 drop-shadow">
-          {site.projectIntro}
-        </p>
-      </div>
+      <ScrollExpandMedia
+        mediaType="image"
+        mediaSrc={HERO_MEDIA}
+        bgImageSrc={HERO_BG}
+        title="桑梓智护 心驿耆年"
+        date="智慧医养赋能计划"
+        scrollToExpand="向下滚动，展开调研故事"
+        textBlend
+      >
+        <div className="max-w-4xl mx-auto text-center text-white">
+          <p className="text-lg md:text-xl text-white/90">{site.projectIntro}</p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link
+              href="#about-section"
+              className="px-6 py-3 rounded-full bg-hust text-white hover:bg-hust-dark transition-colors shadow-lg"
+            >
+              进入项目介绍
+            </Link>
+            <Link
+              href="#timeline"
+              className="px-6 py-3 rounded-full border border-white/60 text-white hover:bg-white/10 transition-colors"
+            >
+              查看调研线路
+            </Link>
+          </div>
+        </div>
+      </ScrollExpandMedia>
     </section>
   );
 }

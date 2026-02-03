@@ -94,7 +94,7 @@ const AnimatedRoadmap = React.forwardRef<HTMLDivElement, AnimatedRoadmapProps>(
             <motion.path
               d="M 50 350 Q 200 50 400 200 T 750 100"
               fill="none"
-              stroke="hsl(var(--primary))"
+              stroke="var(--primary)"
               strokeWidth="3"
               strokeDasharray="10 5"
               strokeLinecap="round"

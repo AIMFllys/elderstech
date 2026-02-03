@@ -47,23 +47,111 @@ export const timelineModalImages = {
   getStarted: "https://husteread.com/storage/files/elderstech/PPT/011.png",
 };
 
-/** 关于活动：四大板块（来自立项书） */
-export const aboutActivities = [
+export const timelineSummary =
+  "集中指导、分散调研，成员返乡开展实地调研，开发组同步推进应用原型与产品设计。";
+
+export const timelineMapImage =
+  "https://images.unsplash.com/photo-1502920514313-52581002a659?auto=format&fit=crop&w=1200&q=80";
+
+export const timelineMilestones = [
   {
+    id: 1,
+    name: "准备启动",
+    status: "complete" as const,
+    position: { top: "70%", left: "5%" },
+  },
+  {
+    id: 2,
+    name: "分散调研",
+    status: "in-progress" as const,
+    position: { top: "25%", left: "22%" },
+  },
+  {
+    id: 3,
+    name: "集中分析",
+    status: "pending" as const,
+    position: { top: "48%", left: "55%" },
+  },
+  {
+    id: 4,
+    name: "成果总结",
+    status: "pending" as const,
+    position: { top: "12%", right: "8%" },
+  },
+];
+
+export const aboutIntro =
+  "以积极应对人口老龄化国家战略为指引，我们聚焦老年群体真实需求，结合问卷、访谈与实地走访，评估智慧医养服务的成效与痛点，探索“智慧工具是桥梁还是壁垒”的核心议题，最终形成适老化服务与产品改进的青年方案。";
+
+export const aboutServiceItems = [
+  {
+    icon: "survey",
     title: "返乡摸底调研",
-    desc: "组织队员返回家乡，深入养老机构、医院老年科室及老年人家庭，通过问卷调查与深度访谈，系统调研当前医养服务的供给模式与老年人对智慧产品的真实使用体验。",
+    description:
+      "走进养老机构、医院老年科室与老人家庭，收集医养服务供给、智慧产品体验与需求痛点。",
+    position: "left",
   },
   {
+    icon: "case",
     title: "开展案例研究",
-    desc: "围绕「智慧工具是桥梁还是壁垒」的核心问题，对典型使用场景进行深度案例剖析，形成有深度的案例报告。",
+    description:
+      "追踪典型场景下的学习与使用过程，梳理智慧工具带来的支持与障碍。",
+    position: "left",
   },
   {
+    icon: "prototype",
     title: "推动融合创新",
-    desc: "启动「智护银龄」辅助工具开发项目，设计并开发面向老年人的智能用药与健康导航轻应用原型，配套适老化图标包、药物分类色卡等实体辅助工具。",
+    description:
+      "开发“智护银龄”轻应用原型与适老化图标包、药物色卡等辅助工具。",
+    position: "left",
   },
   {
-    title: "总结调研发现",
-    desc: "在全面调研与案例分析基础上，系统梳理智慧医养服务在基层落地面临的现实矛盾，撰写实践报告，提出具有建设性、可操作性的服务优化与产品改进方案。",
+    icon: "analysis",
+    title: "集中分析研判",
+    description:
+      "对调研数据进行归纳与对比，形成案例报告与关键问题清单。",
+    position: "right",
+  },
+  {
+    icon: "proposal",
+    title: "贡献青年方案",
+    description:
+      "提出可操作的服务优化建议，助力构建中国特色智慧医养体系。",
+    position: "right",
+  },
+  {
+    icon: "impact",
+    title: "成果传播转化",
+    description:
+      "以报告、图文与视频等形式传播实践成果，推动社会认知与持续改进。",
+    position: "right",
+  },
+];
+
+export const aboutImage =
+  "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=800&q=80";
+
+export const aboutCta = {
+  title: "准备好了解调研行动了吗？",
+  description: "点击进入活动详情页，查看调研流程、方法与阶段成果。",
+};
+
+export const activitySections = [
+  {
+    title: "选题背景与意义",
+    desc: "我国老龄化程度快速加深，医养服务需求与供给矛盾凸显。智慧医养在带来新工具的同时也可能形成新的“数字鸿沟”。本项目围绕老年群体真实需求，探索医养融合的可行路径。",
+  },
+  {
+    title: "实践主要内容",
+    desc: "返乡摸底调研、开展案例研究、推动融合创新、总结调研发现，最终形成实践报告与适老化产品原型。",
+  },
+  {
+    title: "实践具体方案",
+    desc: "时间为2026年1月25日至2月22日，覆盖湖北、黑龙江、安徽、山东、河北、内蒙古、贵州等地，综合运用问卷、访谈、实地走访与文献研究。",
+  },
+  {
+    title: "已有实践基础",
+    desc: "上一届实践走访17家机构，完成百余份问卷，覆盖7万老年人，提出12项建议，形成4份专项建议函，并获5家媒体报道。",
   },
 ];
 
@@ -76,6 +164,9 @@ export const stats = [
   { label: "媒体报道", value: "5", suffix: "家", desc: "服务获报道" },
 ];
 
+export const statsIntro =
+  "上一届实践基础：走访多地机构，完成问卷与访谈，形成报告与可执行建议。";
+
 /** 功能导航五卡 */
 export const navCards = [
   { title: "团队", desc: "团队成员信息", href: "/team", icon: "team" },
@@ -83,6 +174,67 @@ export const navCards = [
   { title: "剪影", desc: "调研图片与视频记录", href: "/gallery", icon: "gallery" },
   { title: "记录", desc: "调研手抄报记录", href: "/records", icon: "records" },
   { title: "反思", desc: "调研反思", href: "/reflection", icon: "reflection" },
+];
+
+export const navTimelineIntro =
+  "围绕团队、成果、剪影、记录与反思，构建完整的调研成果导航体系。";
+
+export const navTimelineItems = [
+  {
+    id: 1,
+    title: "团队",
+    date: "成员信息",
+    content: "呈现指导教师与成员构成，展示跨学科协作优势。",
+    category: "Team",
+    icon: "users",
+    relatedIds: [2],
+    status: "completed" as const,
+    energy: 85,
+  },
+  {
+    id: 2,
+    title: "成果",
+    date: "数据统计",
+    content: "汇总调研走访、问卷与报告成果。",
+    category: "Results",
+    icon: "bar",
+    relatedIds: [1, 3],
+    status: "in-progress" as const,
+    energy: 70,
+  },
+  {
+    id: 3,
+    title: "剪影",
+    date: "影像记录",
+    content: "记录走访、访谈与产品共创现场。",
+    category: "Gallery",
+    icon: "camera",
+    relatedIds: [2, 4],
+    status: "pending" as const,
+    energy: 60,
+  },
+  {
+    id: 4,
+    title: "记录",
+    date: "手账档案",
+    content: "收录电子手账与调研纪要。",
+    category: "Records",
+    icon: "book",
+    relatedIds: [3, 5],
+    status: "pending" as const,
+    energy: 45,
+  },
+  {
+    id: 5,
+    title: "反思",
+    date: "实践心得",
+    content: "凝练调研反思与青年方案。",
+    category: "Reflection",
+    icon: "light",
+    relatedIds: [4],
+    status: "pending" as const,
+    energy: 35,
+  },
 ];
 
 /** 团队成员（来自 docs/社会实践/团队名单.md） */
@@ -94,6 +246,7 @@ export interface TeamMember {
   college: string;
   phone: string;
   place: string;
+  avatar: string;
 }
 
 export const teamMembers: TeamMember[] = [
@@ -105,6 +258,8 @@ export const teamMembers: TeamMember[] = [
     college: "基础医学院临床医学五年制2401班",
     phone: "18134035361",
     place: "河北省张家口市康保县永康社区",
+    avatar:
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=300&q=80",
   },
   {
     name: "何佳欢",
@@ -113,6 +268,8 @@ export const teamMembers: TeamMember[] = [
     college: "基础医学院临床医学五年制2505班",
     phone: "14753531433",
     place: "山东省烟台市芝罘区向阳街道",
+    avatar:
+      "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=300&q=80",
   },
   {
     name: "丁文轩",
@@ -121,6 +278,8 @@ export const teamMembers: TeamMember[] = [
     college: "基础医学院临床医学五年制2405班",
     phone: "18356015183",
     place: "合肥市瑶海区新站高新区瑶海街道",
+    avatar:
+      "https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?auto=format&fit=crop&w=300&q=80",
   },
   {
     name: "赵梓舒",
@@ -129,6 +288,8 @@ export const teamMembers: TeamMember[] = [
     college: "基础医学院临床医学五年制2501班",
     phone: "15754873002",
     place: "内蒙古自治区呼和浩特市赛罕区中专路街道",
+    avatar:
+      "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=300&q=80",
   },
   {
     name: "李文龙",
@@ -137,6 +298,8 @@ export const teamMembers: TeamMember[] = [
     college: "基础医学院儿科2501班",
     phone: "13258602586",
     place: "黑龙江省佳木斯市向阳区永泰社区",
+    avatar:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80",
   },
   {
     name: "张星睿",
@@ -145,6 +308,8 @@ export const teamMembers: TeamMember[] = [
     college: "药学院药学2402班",
     phone: "18627937077",
     place: "黑龙江省佳木斯市向阳区永红社区",
+    avatar:
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=300&q=80",
   },
   {
     name: "罗宇然",
@@ -153,6 +318,8 @@ export const teamMembers: TeamMember[] = [
     college: "药学院生药2401",
     phone: "18105488483",
     place: "贵州省黔南州罗甸县沫阳镇跃进村",
+    avatar:
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80",
   },
   {
     name: "周嘉琦",
@@ -161,6 +328,8 @@ export const teamMembers: TeamMember[] = [
     college: "基础医学院临床医学八年制2503班",
     phone: "13707180127",
     place: "武汉市青山区红卫路街道翠园社区",
+    avatar:
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=300&q=80",
   },
   {
     name: "孔德羽",
@@ -169,6 +338,8 @@ export const teamMembers: TeamMember[] = [
     college: "基础医学院基础医学（强基）2501",
     phone: "15245059981",
     place: "黑龙江省哈尔滨市道里区丽水社区",
+    avatar:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80",
   },
   {
     name: "杨静萱",
@@ -177,8 +348,13 @@ export const teamMembers: TeamMember[] = [
     college: "基础医学院基医学（强基）2301",
     phone: "13921906688",
     place: "江苏省扬州市扬子津街道桃源社区",
+    avatar:
+      "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=300&q=80",
   },
 ];
+
+export const teamIntro =
+  "基础医学院与药学院本科生组成，兼具医学与计算机背景，聚焦智慧医养真实需求。";
 
 export const instructors = [
   { name: "田德生", title: "基础医学院党委副书记", research: "思想政治教育" },

@@ -1,4 +1,6 @@
-﻿import React, { useEffect, useState } from "react";
+﻿"use client";
+
+import React, { useEffect, useState } from "react";
 import { FaCampground, FaFire, FaTint, FaHotTub, FaHiking } from "react-icons/fa";
 
 const InteractiveSelector = () => {
@@ -77,7 +79,7 @@ const InteractiveSelector = () => {
 
       <div className="h-12" />
 
-      <div className="options flex w-full max-w-[900px] min-w-[600px] h-[400px] mx-0 items-stretch overflow-hidden relative">
+      <div className="options flex w-full max-w-[900px] min-w-[320px] sm:min-w-[600px] h-[400px] mx-0 items-stretch overflow-hidden relative">
         {options.map((option, index) => (
           <div
             key={index}

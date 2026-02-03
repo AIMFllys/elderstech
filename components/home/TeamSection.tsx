@@ -1,9 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { teamMembers, instructors } from "@/lib/data";
+import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
+import { teamMembers, instructors, teamIntro } from "@/lib/data";
 
 export function TeamSection() {
+  const tooltipItems = teamMembers.map((member, index) => ({
+    id: index + 1,
+    name: member.name,
+    designation: member.role
+      ? `${member.role} · ${member.college}`
+      : member.college,
+    image: member.avatar,
+  }));
+
   return (
     <section
       id="team"
@@ -13,9 +23,10 @@ export function TeamSection() {
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
           团队展示
         </h2>
-        <p className="text-center text-foreground/80 mb-8">
-          基础医学院与药学院本科生，兼具医学与计算机背景。
-        </p>
+        <p className="text-center text-foreground/80 mb-10">{teamIntro}</p>
+        <div className="flex justify-center mb-10">
+          <AnimatedTooltip items={tooltipItems} />
+        </div>
         <div className="mb-10">
           <h3 className="text-lg font-semibold text-hust mb-4">指导教师</h3>
           <ul className="flex flex-wrap gap-4">

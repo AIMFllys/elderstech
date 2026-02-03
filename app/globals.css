@@ -5,6 +5,21 @@
 :root {
   --background: #f8f5f0;
   --foreground: #5a4b3c;
+  --card: #ffffff;
+  --card-foreground: #5a4b3c;
+  --primary: #b8860b;
+  --primary-foreground: #ffffff;
+  --secondary: #f1e6cf;
+  --secondary-foreground: #5a4b3c;
+  --muted: #efe7da;
+  --muted-foreground: #7c6a56;
+  --accent: #e8dcc5;
+  --accent-foreground: #5a4b3c;
+  --destructive: #b42318;
+  --destructive-foreground: #ffffff;
+  --border: #e3d8c6;
+  --input: #e3d8c6;
+  --ring: #b8860b;
   --hust: #b8860b;
   --ink: #5a4b3c;
   --paper: #f8f5f0;
@@ -13,6 +28,21 @@
 .dark {
   --background: #1a1a1a;
   --foreground: #e8e6e3;
+  --card: #111111;
+  --card-foreground: #e8e6e3;
+  --primary: #e6c875;
+  --primary-foreground: #1a1a1a;
+  --secondary: #2a261f;
+  --secondary-foreground: #e8e6e3;
+  --muted: #2b2620;
+  --muted-foreground: #cfcac4;
+  --accent: #332d24;
+  --accent-foreground: #e8e6e3;
+  --destructive: #d92d20;
+  --destructive-foreground: #1a1a1a;
+  --border: #3b352c;
+  --input: #3b352c;
+  --ring: #e6c875;
   --paper: #1a1a1a;
   --ink: #e8e6e3;
 }
@@ -21,6 +51,33 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: "ZCOOL XiaoWei", "STKaiti", "KaiTi", "Microsoft YaHei", serif;
+}
+
+body.bg-parallax {
+  background-color: #f8f5f0 !important;
+  background-image: linear-gradient(
+      rgba(248, 245, 240, 0.9),
+      rgba(248, 245, 240, 0.9)
+    ),
+    url("https://picsum.photos/id/307/1920/1080") !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+}
+
+html.dark body.bg-parallax {
+  background-color: #111827 !important;
+  background-image: linear-gradient(
+      rgba(20, 20, 20, 0.94),
+      rgba(20, 20, 20, 0.94)
+    ),
+    url("https://picsum.photos/id/307/1920/1080") !important;
+}
+
+#floatCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
 }
 
 @layer utilities {
