@@ -1,4 +1,4 @@
-﻿import type { MediaItemType } from "@/components/ui/interactive-bento-gallery";
+﻿import type { MediaItemType } from "@/components/ui/interactive-bento-gallery.types";
 
 export const galleryArcImages = [
   "https://images.unsplash.com/photo-1516841273335-e39b37888115?auto=format&fit=crop&w=400&q=80",

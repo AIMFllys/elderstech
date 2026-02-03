@@ -1,29 +1,10 @@
 ﻿"use client";
 
-import type React from "react";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { ArrowRight, Zap } from "lucide-react";
-
-interface AboutService {
-  icon: React.ReactNode;
-  secondaryIcon?: React.ReactNode;
-  title: string;
-  description: string;
-  position: "left" | "right";
-}
-
-interface AboutSectionProps {
-  eyebrow: string;
-  title: string;
-  description: string;
-  services: AboutService[];
-  imageSrc: string;
-  ctaLabel: string;
-  ctaDescription: string;
-  onCtaClick?: () => void;
-  ctaHref?: string;
-}
+import type { AboutSectionProps } from "@/components/ui/about/types";
+import { ServiceItem } from "@/components/ui/about/ServiceItem";
 
 export default function AboutUsSection({
   eyebrow,
@@ -48,10 +29,6 @@ export default function AboutUsSection({
   const y2 = useTransform(scrollYProgress, [0, 1], [0, 50]);
   const rotate1 = useTransform(scrollYProgress, [0, 1], [0, 20]);
   const rotate2 = useTransform(scrollYProgress, [0, 1], [0, -20]);
-
-  useEffect(() => {
-    // noop for initial mount animations
-  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -160,7 +137,7 @@ export default function AboutUsSection({
                   description={service.description}
                   variants={itemVariants}
                   delay={index * 0.2}
-                  direction="left"
+                  position="left"
                 />
               ))}
           </div>
@@ -221,7 +198,7 @@ export default function AboutUsSection({
                   description={service.description}
                   variants={itemVariants}
                   delay={index * 0.2}
-                  direction="right"
+                  position="right"
                 />
               ))}
           </div>
@@ -257,63 +234,5 @@ export default function AboutUsSection({
         </motion.div>
       </motion.div>
     </section>
-  );
-}
-
-interface ServiceItemProps {
-  icon: React.ReactNode;
-  secondaryIcon?: React.ReactNode;
-  title: string;
-  description: string;
-  variants: {
-    hidden: { opacity: number; y?: number };
-    visible: { opacity: number; y?: number; transition: { duration: number; ease: string } };
-  };
-  delay: number;
-  direction: "left" | "right";
-}
-
-function ServiceItem({
-  icon,
-  secondaryIcon,
-  title,
-  description,
-  variants,
-  delay,
-  direction,
-}: ServiceItemProps) {
-  return (
-    <motion.div
-      className="flex flex-col group"
-      variants={variants}
-      transition={{ delay }}
-      whileHover={{ y: -5, transition: { duration: 0.2 } }}
-    >
-      <motion.div
-        className="flex items-center gap-3 mb-3"
-        initial={{ x: direction === "left" ? -20 : 20, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: delay + 0.2 }}
-      >
-        <motion.div
-          className="text-[#88734C] bg-[#88734C]/10 p-3 rounded-lg transition-colors duration-300 group-hover:bg-[#88734C]/20 relative"
-          whileHover={{ rotate: [0, -10, 10, -5, 0], transition: { duration: 0.5 } }}
-        >
-          {icon}
-          {secondaryIcon}
-        </motion.div>
-        <h3 className="text-xl font-medium text-[#202e44] group-hover:text-[#88734C] transition-colors duration-300">
-          {title}
-        </h3>
-      </motion.div>
-      <motion.p
-        className="text-sm text-[#202e44]/80 leading-relaxed pl-12"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: delay + 0.4 }}
-      >
-        {description}
-      </motion.p>
-    </motion.div>
   );
 }

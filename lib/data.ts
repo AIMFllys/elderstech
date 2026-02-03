@@ -132,7 +132,7 @@ export const aboutImage =
   "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=800&q=80";
 
 export const aboutCta = {
-  title: "准备好了解调研行动了吗？",
+  title: "立即开始了解",
   description: "点击进入活动详情页，查看调研流程、方法与阶段成果。",
 };
 
