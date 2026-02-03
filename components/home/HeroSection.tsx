@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { site } from "@/lib/data";
 import ScrollExpandMedia from "@/components/ui/scroll-expansion-hero";
-import { ThemeToggle } from "@/components/ThemeToggle";
 
 const HERO_MEDIA =
   "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80";
@@ -13,9 +12,6 @@ const HERO_BG =
 export function HeroSection() {
   return (
     <section className="relative">
-      <div className="absolute top-6 right-6 z-30">
-        <ThemeToggle />
-      </div>
       <ScrollExpandMedia
         mediaType="image"
         mediaSrc={HERO_MEDIA}

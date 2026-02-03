@@ -357,9 +357,24 @@ export const teamIntro =
   "基础医学院与药学院本科生组成，兼具医学与计算机背景，聚焦智慧医养真实需求。";
 
 export const instructors = [
-  { name: "田德生", title: "基础医学院党委副书记", research: "思想政治教育" },
-  { name: "王 卉", title: "基础医学院团委书记", research: "大学生思想政治教育" },
-  { name: "刘诗雅", title: "无", research: "无" },
+  {
+    name: "田德生",
+    title: "基础医学院党委副书记",
+    research: "思想政治教育",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    name: "王博",
+    title: "基础医学院团委书记",
+    research: "大学生思想政治教育",
+    avatar: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    name: "刘诗雅",
+    title: "无",
+    research: "无",
+    avatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=300&q=80",
+  },
 ];
 
 /** 页脚信息（主脉络规定） */

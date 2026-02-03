@@ -9,7 +9,7 @@ import { Mail, Phone, MessageCircle } from "lucide-react";
 export function FooterSection() {
   return (
     <>
-      <section className="relative mx-auto mb-20 mt-6 max-w-5xl px-4">
+      <section id="footer" className="relative mx-auto mb-20 mt-6 max-w-5xl px-4">
         <HighlightGroup className="group h-full">
           <HighlighterItem className="rounded-3xl p-6">
             <div className="relative z-20 h-full overflow-hidden rounded-3xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-black">

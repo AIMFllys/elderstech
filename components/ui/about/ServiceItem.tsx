@@ -44,12 +44,12 @@ export function ServiceItem({
           {icon}
           {secondaryIcon}
         </motion.div>
-        <h3 className="text-xl font-medium text-[#202e44] group-hover:text-[#88734C] transition-colors duration-300">
+        <h3 className="text-xl font-medium text-foreground group-hover:text-[#88734C] transition-colors duration-300">
           {title}
         </h3>
       </motion.div>
       <motion.p
-        className="text-sm text-[#202e44]/80 leading-relaxed pl-12"
+        className="text-sm text-foreground/80 leading-relaxed pl-12"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: delay + 0.4 }}
