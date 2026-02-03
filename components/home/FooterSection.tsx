@@ -73,7 +73,7 @@ export function FooterSection() {
         </HighlightGroup>
       </section>
 
-      <footer className="bg-ink dark:bg-black text-white py-12 px-4">
+      <footer className="py-12 px-4 text-foreground">
         <div className="container mx-auto max-w-5xl">
           <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
             <div>

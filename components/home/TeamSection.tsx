@@ -17,7 +17,7 @@ export function TeamSection() {
   return (
     <section
       id="team"
-      className="py-16 md:py-24 px-4 bg-background dark:bg-paper-dark text-foreground"
+      className="py-16 md:py-24 px-4 text-foreground"
     >
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">

@@ -53,33 +53,6 @@ body {
   font-family: "ZCOOL XiaoWei", "STKaiti", "KaiTi", "Microsoft YaHei", serif;
 }
 
-body.bg-parallax {
-  background-color: #f8f5f0 !important;
-  background-image: linear-gradient(
-      rgba(248, 245, 240, 0.9),
-      rgba(248, 245, 240, 0.9)
-    ),
-    url("https://picsum.photos/id/307/1920/1080") !important;
-  background-attachment: fixed !important;
-  background-size: cover !important;
-}
-
-html.dark body.bg-parallax {
-  background-color: #111827 !important;
-  background-image: linear-gradient(
-      rgba(20, 20, 20, 0.94),
-      rgba(20, 20, 20, 0.94)
-    ),
-    url("https://picsum.photos/id/307/1920/1080") !important;
-}
-
-#floatCanvas {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
