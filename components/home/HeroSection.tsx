@@ -4,6 +4,7 @@ import ScrollExpandMedia from "@/components/ui/scroll-expansion-hero";
 import { GooeyText } from "@/components/ui/gooey-text-morphing";
 import { MagnetizeButton } from "@/components/ui/magnetize-button";
 import { useRouter } from "next/navigation";
+import { Sparkles, Compass } from "lucide-react";
 
 const HERO_MEDIA =
   "https://me7aitdbxq.ufs.sh/f/2wsMIGDMQRdYuZ5R8ahEEZ4aQK56LizRdfBSqeDMsmUIrJN1";
@@ -44,11 +45,17 @@ export function HeroSection() {
               textClassName="whitespace-nowrap text-[#201408] drop-shadow-[0_2px_10px_rgba(184,134,11,0.45)] dark:text-white dark:drop-shadow-none font-['YouYuan','Yuanti SC','Microsoft YaHei','sans-serif']"
             />
           </div>
-          <div className="mt-12 flex flex-wrap justify-center gap-5">
-            <MagnetizeButton onClick={() => router.push("#about-section")}>
+          <div className="mt-16 flex flex-wrap justify-center gap-5">
+            <MagnetizeButton
+              icon={Sparkles}
+              onClick={() => router.push("#about-section")}
+            >
               进入项目介绍
             </MagnetizeButton>
-            <MagnetizeButton onClick={() => router.push("#timeline")}>
+            <MagnetizeButton
+              icon={Compass}
+              onClick={() => router.push("#timeline")}
+            >
               查看调研线路
             </MagnetizeButton>
           </div>
