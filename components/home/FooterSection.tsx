@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import { footer } from "@/lib/data";
-import { HighlighterItem, HighlightGroup, Particles } from "@/components/ui/highlighter";
+import { HighlighterItem, HighlightGroup, Particles } from "@/components/ui/highlighter/index";
 import { Mail, Phone, MessageCircle } from "lucide-react";
 
 export function FooterSection() {

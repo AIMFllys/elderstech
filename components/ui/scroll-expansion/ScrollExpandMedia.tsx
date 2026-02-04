@@ -12,6 +12,8 @@ interface ScrollExpandMediaProps {
   posterSrc?: string;
   bgImageSrc: string;
   title?: string;
+  titleLines?: [string, string];
+  titleOffsetVw?: [number, number];
   date?: string;
   scrollToExpand?: string;
   textBlend?: boolean;
@@ -24,6 +26,8 @@ export default function ScrollExpandMedia({
   posterSrc,
   bgImageSrc,
   title,
+  titleLines,
+  titleOffsetVw,
   date,
   scrollToExpand,
   textBlend,
@@ -38,8 +42,14 @@ export default function ScrollExpandMedia({
   const mediaHeight = 400 + scrollProgress * (isMobileState ? 200 : 400);
   const textTranslateX = scrollProgress * (isMobileState ? 180 : 150);
 
-  const firstWord = title ? title.split(" ")[0] : "";
-  const restOfTitle = title ? title.split(" ").slice(1).join(" ") : "";
+  const [line1, line2] = titleLines ?? (() => {
+    const firstWord = title ? title.split(" ")[0] : "";
+    const restOfTitle = title ? title.split(" ").slice(1).join(" ") : "";
+    return [firstWord, restOfTitle] as [string, string];
+  })();
+  const line2IndentClass = titleLines ? "pl-8 md:pl-12 lg:pl-16" : "";
+  const line1Offset = titleOffsetVw?.[0] ?? 0;
+  const line2Offset = titleOffsetVw?.[1] ?? 0;
 
   return (
     <div
@@ -56,14 +66,18 @@ export default function ScrollExpandMedia({
           >
             <Image
               src={bgImageSrc}
-              alt=""
+              alt="Background"
               width={1920}
               height={1080}
-              className="w-screen h-screen object-cover"
+              className="w-screen h-screen"
+              style={{
+                objectFit: "cover",
+                objectPosition: "center",
+              }}
               priority
               unoptimized
             />
-            <div className="absolute inset-0 bg-black/30" />
+            <div className="absolute inset-0 bg-black/10" />
           </motion.div>
 
           <div className="container mx-auto flex flex-col items-center justify-start relative z-10">
@@ -89,7 +103,7 @@ export default function ScrollExpandMedia({
                 <div className="flex flex-col items-center text-center relative z-10 mt-4 transition-none">
                   {date && (
                     <p
-                      className="text-2xl text-hust-light"
+                      className="text-2xl text-blue-200"
                       style={{
                         transform: `translateX(-${textTranslateX}vw)`,
                       }}
@@ -99,7 +113,7 @@ export default function ScrollExpandMedia({
                   )}
                   {scrollToExpand && (
                     <p
-                      className="text-hust-light font-medium text-center"
+                      className="text-blue-200 font-medium text-center"
                       style={{ transform: `translateX(${textTranslateX}vw)` }}
                     >
                       {scrollToExpand}
@@ -114,16 +128,20 @@ export default function ScrollExpandMedia({
                 }`}
               >
                 <motion.h2
-                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-hust-light transition-none"
-                  style={{ transform: `translateX(-${textTranslateX}vw)` }}
+                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-blue-200 transition-none"
+                  style={{
+                    transform: `translateX(calc(-${textTranslateX}vw + ${line1Offset}vw))`,
+                  }}
                 >
-                  {firstWord}
+                  {line1}
                 </motion.h2>
                 <motion.h2
-                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-hust-light transition-none"
-                  style={{ transform: `translateX(${textTranslateX}vw)` }}
+                  className={`text-4xl md:text-5xl lg:text-6xl font-bold text-center text-blue-200 transition-none ${line2IndentClass}`}
+                  style={{
+                    transform: `translateX(calc(${textTranslateX}vw + ${line2Offset}vw))`,
+                  }}
                 >
-                  {restOfTitle}
+                  {line2}
                 </motion.h2>
               </div>
             </div>

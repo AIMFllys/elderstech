@@ -1,43 +1,56 @@
-"use client";
+﻿"use client";
 
-import Link from "next/link";
-import { site } from "@/lib/data";
 import ScrollExpandMedia from "@/components/ui/scroll-expansion-hero";
+import { GooeyText } from "@/components/ui/gooey-text-morphing";
+import { MagnetizeButton } from "@/components/ui/magnetize-button";
+import { useRouter } from "next/navigation";
 
 const HERO_MEDIA =
-  "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80";
+  "https://me7aitdbxq.ufs.sh/f/2wsMIGDMQRdYuZ5R8ahEEZ4aQK56LizRdfBSqeDMsmUIrJN1";
+const HERO_POSTER =
+  "https://images.pexels.com/videos/5752729/space-earth-universe-cosmos-5752729.jpeg";
 const HERO_BG =
-  "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=1920&q=80";
+  "https://me7aitdbxq.ufs.sh/f/2wsMIGDMQRdYMNjMlBUYHaeYpxduXPVNwf8mnFA61L7rkcoS";
 
 export function HeroSection() {
+  const router = useRouter();
+
   return (
     <section className="relative">
       <ScrollExpandMedia
-        mediaType="image"
+        mediaType="video"
         mediaSrc={HERO_MEDIA}
+        posterSrc={HERO_POSTER}
         bgImageSrc={HERO_BG}
-        title="桑梓智护 心驿耆年"
+        title="桑榆智护 心陪耆年"
+        titleLines={["桑榆智护", "心陪耆年"]}
+        titleOffsetVw={[-6, 3]}
         date="智慧医养赋能计划"
         scrollToExpand="向下滚动，展开调研故事"
         textBlend
       >
         <div className="max-w-4xl mx-auto text-center text-foreground dark:text-white">
-          <p className="text-lg md:text-xl text-foreground/80 dark:text-white/90">
-            {site.projectIntro}
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link
-              href="#about-section"
-              className="px-6 py-3 rounded-full bg-hust text-white hover:bg-hust-dark transition-colors shadow-lg"
-            >
+          <div className="h-[80px] md:h-[110px] w-full flex items-center justify-center">
+            <GooeyText
+              texts={[
+                "探索智慧工具赋能银龄",
+                "走进机构、医院与家庭调研",
+                "打造「智护银龄」健康导航原型",
+                "为中国特色智慧医养建言",
+              ]}
+              morphTime={1}
+              cooldownTime={0.7}
+              className="font-semibold"
+              textClassName="whitespace-nowrap text-[#201408] drop-shadow-[0_2px_10px_rgba(184,134,11,0.45)] dark:text-white dark:drop-shadow-none font-['YouYuan','Yuanti SC','Microsoft YaHei','sans-serif']"
+            />
+          </div>
+          <div className="mt-12 flex flex-wrap justify-center gap-5">
+            <MagnetizeButton onClick={() => router.push("#about-section")}>
               进入项目介绍
-            </Link>
-            <Link
-              href="#timeline"
-              className="px-6 py-3 rounded-full border border-foreground/30 text-foreground hover:bg-foreground/10 dark:border-white/60 dark:text-white dark:hover:bg-white/10 transition-colors"
-            >
+            </MagnetizeButton>
+            <MagnetizeButton onClick={() => router.push("#timeline")}>
               查看调研线路
-            </Link>
+            </MagnetizeButton>
           </div>
         </div>
       </ScrollExpandMedia>
