@@ -1,5 +1,6 @@
 import { BackLink } from "@/components/layout/back-link";
-import { AnimatedGradient } from "@/components/ui/animated/animated-gradient-with-svg";
+import { AnimatedGradient } from "@/components/ui/animated-gradient-with-svg";
+import { Text_03 } from "@/components/ui/wave-text";
 import { stats, site, statsIntro } from "@/lib/data";
 
 const cardColors = [
@@ -41,10 +42,12 @@ export default function ResultsPage() {
                   <h3 className="text-sm md:text-base text-foreground/80">
                     {item.label}
                   </h3>
-                  <p className="text-3xl md:text-4xl font-semibold mb-2 text-foreground">
-                    {item.value}
-                    <span className="text-base ml-1">{item.suffix}</span>
-                  </p>
+                  <div className="mb-2">
+                    <Text_03
+                      text={`${item.value}${item.suffix ?? ""}`}
+                      className="text-left text-3xl md:text-4xl font-semibold text-black dark:text-foreground"
+                    />
+                  </div>
                   <p className="text-sm text-foreground/70">{item.desc}</p>
                 </div>
               </div>

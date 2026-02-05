@@ -47,7 +47,7 @@ export const aboutServiceItems = [
 ];
 
 export const aboutImage =
-  "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=800&q=80";
+  "https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?auto=format&fit=crop&w=900&q=80";
 
 export const aboutCta = {
   title: "立即开始了解",

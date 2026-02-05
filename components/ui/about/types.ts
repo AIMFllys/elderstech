@@ -18,4 +18,11 @@ export interface AboutSectionProps {
   ctaDescription: string;
   onCtaClick?: () => void;
   ctaHref?: string;
+  stats?: Array<{
+    label: string;
+    value: string;
+    suffix?: string;
+    desc?: string;
+  }>;
+  statsIntro?: string;
 }

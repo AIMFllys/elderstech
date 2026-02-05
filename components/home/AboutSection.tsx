@@ -9,6 +9,7 @@ import {
   aboutImage,
   aboutCta,
 } from "@/lib/data";
+import { stats, statsIntro } from "@/lib/data";
 
 const iconMap: Record<string, ReactNode> = {
   survey: <Sparkles className="w-6 h-6" />,
@@ -40,6 +41,8 @@ export function AboutSection() {
       ctaLabel={aboutCta.title}
       ctaDescription={aboutCta.description}
       ctaHref="/activity"
+      stats={stats}
+      statsIntro={statsIntro}
     />
   );
 }
