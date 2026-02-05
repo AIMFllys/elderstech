@@ -10,4 +10,5 @@ export interface TimelineItem {
   relatedIds: number[];
   status: "completed" | "in-progress" | "pending";
   energy: number;
+  color?: string;
 }
