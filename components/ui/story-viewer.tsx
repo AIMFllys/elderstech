@@ -66,6 +66,7 @@ function formatTimestamp(timestamp: string): string {
 interface StoryThumbnailProps {
   stories: Story[];
   username: string;
+  avatar: string;
   viewedIndices: Set<number>;
   onClick: () => void;
   className?: string;
@@ -74,6 +75,7 @@ interface StoryThumbnailProps {
 function StoryThumbnail({
   stories,
   username,
+  avatar,
   viewedIndices,
   onClick,
   className,
@@ -82,16 +84,6 @@ function StoryThumbnail({
   const gapDegrees = segmentCount > 1 ? 12 : 0;
   const segmentDegrees = (360 - gapDegrees * segmentCount) / segmentCount;
   const allViewed = viewedIndices.size === stories.length;
-
-  const lastStory = stories[stories.length - 1];
-  const thumbnailImage = React.useMemo(() => {
-    for (let i = stories.length - 1; i >= 0; i -= 1) {
-      if (stories[i].type === "image") {
-        return stories[i].src;
-      }
-    }
-    return null;
-  }, [stories]);
 
   return (
     <button
@@ -141,22 +133,11 @@ function StoryThumbnail({
 
         <div className="absolute inset-[5px] rounded-full bg-background p-[2px]">
           <div className="w-full h-full rounded-full overflow-hidden bg-muted">
-            {lastStory.type === "video" ? (
-              <video
-                src={lastStory.src}
-                poster={thumbnailImage || undefined}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                muted
-                playsInline
-                preload="metadata"
-              />
-            ) : (
-              <img
-                src={lastStory.src}
-                alt={`${username}'s story`}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-              />
-            )}
+            <img
+              src={avatar}
+              alt={username}
+              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+            />
           </div>
         </div>
       </div>
@@ -533,7 +514,7 @@ function StoryViewerModal({
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 bg-black flex items-center justify-center"
+      className="fixed inset-0 z-[9999] bg-black flex items-center justify-center"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -769,6 +750,7 @@ const StoryViewer = React.forwardRef<HTMLDivElement, StoryViewerProps>(
           <StoryThumbnail
             stories={stories}
             username={username}
+            avatar={avatar}
             viewedIndices={viewedIndices}
             onClick={handleOpen}
           />
