@@ -23,8 +23,8 @@ export function HeroSection() {
         mediaSrc={HERO_MEDIA}
         posterSrc={HERO_POSTER}
         bgImageSrc={HERO_BG}
-        title="桑榆智护 心陪耆年"
-        titleLines={["桑榆智护", "心陪耆年"]}
+        title="桑榆智护 心驿耆年"
+        titleLines={["桑榆智护", "心驿耆年"]}
         titleOffsetVw={[-6, 3]}
         date="智慧医养赋能计划"
         scrollToExpand="向下滚动，展开调研故事"

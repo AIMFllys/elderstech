@@ -27,6 +27,7 @@ export default function RadialOrbitalTimeline({
   const nodeRefs = useRef<Record<number, HTMLDivElement | null>>({});
   const rotationRef = useRef(0);
   const rafRef = useRef<number | null>(null);
+  const tweenRef = useRef<number | null>(null);
 
   const orbitSize = useDimensions(orbitRef);
   const radius = useMemo(() => {
@@ -90,7 +91,31 @@ export default function RadialOrbitalTimeline({
     const totalNodes = timelineData.length;
     const targetAngle = (nodeIndex / totalNodes) * 360;
 
-    setRotationAngle(270 - targetAngle);
+    const targetRotation = (270 - targetAngle + 360) % 360;
+    const startRotation = rotationRef.current;
+    const delta = ((targetRotation - startRotation + 540) % 360) - 180;
+    const duration = 600;
+    const startTime = performance.now();
+
+    if (tweenRef.current) {
+      cancelAnimationFrame(tweenRef.current);
+      tweenRef.current = null;
+    }
+
+    const animate = (now: number) => {
+      const t = Math.min(1, (now - startTime) / duration);
+      const eased = 1 - Math.pow(1 - t, 3);
+      const current = (startRotation + delta * eased + 360) % 360;
+      rotationRef.current = current;
+      setRotationAngle(current);
+      updateNodePositions(current);
+
+      if (t < 1) {
+        tweenRef.current = requestAnimationFrame(animate);
+      }
+    };
+
+    tweenRef.current = requestAnimationFrame(animate);
   };
 
   const calculateNodePosition = (angle: number) => {
@@ -136,7 +161,7 @@ export default function RadialOrbitalTimeline({
 
     rotationRef.current = rotationAngle;
     const step = () => {
-      rotationRef.current = (rotationRef.current + 0.2) % 360;
+      rotationRef.current = (rotationRef.current + 0.12) % 360;
       updateNodePositions(rotationRef.current);
       rafRef.current = requestAnimationFrame(step);
     };
@@ -150,6 +175,15 @@ export default function RadialOrbitalTimeline({
       }
     };
   }, [autoRotate, rotationAngle, updateNodePositions]);
+
+  useEffect(() => {
+    return () => {
+      if (tweenRef.current) {
+        cancelAnimationFrame(tweenRef.current);
+        tweenRef.current = null;
+      }
+    };
+  }, []);
 
   const getRelatedItems = (itemId: number): number[] => {
     const currentItem = timelineData.find((item) => item.id === itemId);

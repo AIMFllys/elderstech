@@ -124,7 +124,7 @@ export function OrbitalNode({
       </div>
 
       {isExpanded && (
-        <Card className="absolute top-20 left-1/2 -translate-x-1/2 w-64 bg-background/90 text-black dark:text-white backdrop-blur-lg border-ink/20 dark:border-ink-dark/20 shadow-xl shadow-black/10 dark:shadow-black/40 overflow-visible">
+        <Card className="absolute top-20 left-1/2 -translate-x-1/2 w-64 bg-white dark:bg-[#0b0b0b] text-black dark:text-white border-ink/40 dark:border-white/20 shadow-2xl shadow-black/30 dark:shadow-black/80 overflow-visible">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 bg-ink/30 dark:bg-ink-dark/30"></div>
           <CardHeader className="pb-2">
             <div className="flex justify-between items-center">
@@ -135,15 +135,15 @@ export function OrbitalNode({
                   ? "进行中"
                   : "待启动"}
               </Badge>
-              <span className="text-xs font-mono text-black/60 dark:text-white/70">
+              <span className="text-xs font-mono text-black/80 dark:text-white/80">
                 {item.date}
               </span>
             </div>
-            <CardTitle className="text-sm mt-2 text-black dark:text-white">
+            <CardTitle className="text-sm mt-2 text-black dark:text-white font-semibold">
               {item.title}
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-xs text-black/80 dark:text-white/80">
+          <CardContent className="text-sm text-black/90 dark:text-white/90 leading-relaxed">
             <p>{item.content}</p>
 
             <div className="mt-4 pt-3 border-t border-ink/10 dark:border-ink-dark/10">
@@ -152,7 +152,7 @@ export function OrbitalNode({
                   <Zap size={10} className="mr-1" />
                   关注强度
                 </span>
-                <span className="font-mono text-black/70 dark:text-white/70">
+                <span className="font-mono text-black/85 dark:text-white/85">
                   {item.energy}%
                 </span>
               </div>
@@ -167,8 +167,8 @@ export function OrbitalNode({
             {relatedItems.length > 0 && (
               <div className="mt-4 pt-3 border-t border-ink/10 dark:border-ink-dark/10">
                 <div className="flex items-center mb-2">
-                  <LinkIcon size={10} className="text-black/70 dark:text-white/70 mr-1" />
-                  <h4 className="text-xs uppercase tracking-wider font-medium text-black/70 dark:text-white/70">
+                  <LinkIcon size={10} className="text-black/80 dark:text-white/80 mr-1" />
+                  <h4 className="text-xs uppercase tracking-wider font-medium text-black/80 dark:text-white/80">
                     关联节点
                   </h4>
                 </div>
@@ -178,14 +178,14 @@ export function OrbitalNode({
                       key={relatedItem.id}
                       variant="outline"
                       size="sm"
-                      className="flex items-center h-6 px-2 py-0 text-xs rounded-none border-black/20 dark:border-ink-dark/20 bg-transparent hover:bg-black/5 dark:hover:bg-ink-dark/10 text-black/80 dark:text-white/80 hover:text-black dark:hover:text-white transition-all"
+                      className="flex items-center h-6 px-2 py-0 text-xs rounded-none border-black/30 dark:border-ink-dark/30 bg-transparent hover:bg-black/5 dark:hover:bg-ink-dark/10 text-black/90 dark:text-white/90 hover:text-black dark:hover:text-white transition-all"
                       onClick={(e) => {
                         e.stopPropagation();
                         onToggle(relatedItem.id);
                       }}
                     >
                       {relatedItem.title}
-                      <ArrowRight size={8} className="ml-1 text-black/60 dark:text-white/70" />
+                      <ArrowRight size={8} className="ml-1 text-black/70 dark:text-white/80" />
                     </Button>
                   ))}
                 </div>

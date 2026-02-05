@@ -163,6 +163,17 @@ export function FooterSection() {
           </div>
           <div className="border-t border-gray-700 mt-10 pt-6 text-center text-sm text-gray-500">
             <p>{footer.disclaimer}</p>
+            <p className="mt-2">
+              UI 设计参考自
+              <a
+                href="https://21st.dev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-1 text-gray-400 hover:text-hust-light"
+              >
+                21st
+              </a>
+            </p>
           </div>
         </div>
       </footer>
