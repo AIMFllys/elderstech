@@ -72,12 +72,12 @@ export function Header() {
                 >
                   {link.label}
                 </a>
-                <div className="absolute left-0 top-full mt-0 min-w-[160px] rounded-xl border border-ink/10 dark:border-ink-dark/20 bg-background/95 dark:bg-background/95 shadow-lg opacity-0 invisible pointer-events-none transition-all duration-150 group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible group-focus-within:pointer-events-auto before:content-[''] before:absolute before:left-0 before:-top-2 before:h-2 before:w-full">
+                <div className="absolute left-0 top-full mt-2 min-w-[180px] rounded-2xl border border-ink/10 dark:border-ink-dark/20 bg-white/90 dark:bg-black/80 backdrop-blur-xl shadow-xl ring-1 ring-black/5 dark:ring-white/5 py-1 opacity-0 invisible pointer-events-none transition-all duration-150 group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible group-focus-within:pointer-events-auto before:content-[''] before:absolute before:left-0 before:-top-3 before:h-3 before:w-full">
                   {link.children.map((child) => (
                     <a
                       key={child.label}
                       href={child.href}
-                      className="block px-4 py-2 text-sm text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10"
+                      className="block px-4 py-2.5 text-sm text-black/90 dark:text-white/90 hover:bg-emerald-500/10 dark:hover:bg-emerald-400/10 transition-colors"
                     >
                       {child.label}
                     </a>
