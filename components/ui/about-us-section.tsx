@@ -328,23 +328,23 @@ function StatCard({
       }}
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
     >
-      <div className="text-3xl font-semibold text-black dark:text-foreground">
+      <div className="text-3xl font-semibold text-black dark:text-white">
         {Number.isFinite(numericValue) ? (
           <motion.span>{displayValue}</motion.span>
         ) : (
           <span>{stat.value}</span>
         )}
         {stat.suffix ? (
-          <span className="text-base ml-1 text-black/70 dark:text-foreground/70">
+          <span className="text-base ml-1 text-black/70 dark:text-white/70">
             {stat.suffix}
           </span>
         ) : null}
       </div>
-      <p className="mt-2 text-sm text-black/80 dark:text-foreground/80">
+      <p className="mt-2 text-sm text-black/80 dark:text-white/80">
         {stat.label}
       </p>
       {stat.desc ? (
-        <p className="mt-1 text-xs text-black/60 dark:text-foreground/60">
+        <p className="mt-1 text-xs text-black/60 dark:text-white/60">
           {stat.desc}
         </p>
       ) : null}

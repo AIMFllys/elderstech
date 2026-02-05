@@ -74,6 +74,9 @@ export function OrbitalNode({
           top: `-${(item.energy * 0.5 + 40 - 40) / 2}px`,
         }}
       ></div>
+      {isExpanded && (
+        <div className="absolute -inset-3 rounded-full border border-black/30 dark:border-white/40 animate-ping" />
+      )}
 
       <div
         className={`
