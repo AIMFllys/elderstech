@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import { MagnetizeButton } from "@/components/ui/magnetize-button";
 import { FeatureCarousel, type ImageSet, type Step } from "@/components/ui/animated/animated-feature-carousel";
 import { Typewriter } from "@/components/ui/typewriter";
 import { Text_03 } from "@/components/ui/wave-text";
 import { timelineModalImages } from "@/lib/data";
+import { Eye, Rocket } from "lucide-react";
 
 const steps: Step[] = [
   {
@@ -89,21 +90,12 @@ export function TimelineSection() {
         renderStepActions={(stepIndex) =>
           stepIndex === 0 ? (
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button
-                size="lg"
-                onClick={() => setModal("start")}
-                className="bg-emerald-600 hover:bg-emerald-700 text-white"
-              >
+              <MagnetizeButton icon={Rocket} onClick={() => setModal("start")}>
                 立即开始
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={() => setModal("see")}
-                className="border-emerald-600 text-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-950/30"
-              >
+              </MagnetizeButton>
+              <MagnetizeButton icon={Eye} onClick={() => setModal("see")}>
                 看如何运作
-              </Button>
+              </MagnetizeButton>
             </div>
           ) : null
         }

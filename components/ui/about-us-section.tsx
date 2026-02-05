@@ -5,6 +5,7 @@ import { motion, useInView } from "framer-motion";
 import { ArrowRight, Zap } from "lucide-react";
 import type { AboutSectionProps } from "@/components/ui/about/types";
 import { ServiceItem } from "@/components/ui/about/ServiceItem";
+import { MagnetizeButton } from "@/components/ui/magnetize-button";
 
 export default function AboutUsSection({
   eyebrow,
@@ -171,21 +172,19 @@ export default function AboutUsSection({
             <p className="text-foreground/80">{ctaDescription}</p>
           </div>
           {ctaHref ? (
-            <a
-              href={ctaHref}
-              className="bg-hust hover:bg-hust-dark text-white px-6 py-3 rounded-lg flex items-center gap-2 font-medium transition-colors"
+            <MagnetizeButton
+              icon={ArrowRight}
+              type="button"
+              onClick={() => {
+                window.location.href = ctaHref;
+              }}
             >
-              进入活动详情 <ArrowRight className="w-4 h-4" />
-            </a>
+              进入活动详情
+            </MagnetizeButton>
           ) : (
-            <motion.button
-              className="bg-hust hover:bg-hust-dark text-white px-6 py-3 rounded-lg flex items-center gap-2 font-medium transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={onCtaClick}
-            >
-              进入活动详情 <ArrowRight className="w-4 h-4" />
-            </motion.button>
+            <MagnetizeButton icon={ArrowRight} onClick={onCtaClick}>
+              进入活动详情
+            </MagnetizeButton>
           )}
         </motion.div>
       </motion.div>
