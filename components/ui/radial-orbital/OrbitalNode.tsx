@@ -14,6 +14,7 @@ interface OrbitalNodeProps {
   isPulsing: boolean;
   relatedItems: TimelineItem[];
   onToggle: (id: number) => void;
+  nodeRef?: (el: HTMLDivElement | null) => void;
 }
 
 const getStatusStyles = (status: TimelineItem["status"]): string => {
@@ -37,18 +38,22 @@ export function OrbitalNode({
   isPulsing,
   relatedItems,
   onToggle,
+  nodeRef,
 }: OrbitalNodeProps) {
   const Icon = item.icon;
 
   const nodeStyle = {
-    transform: `translate(${position.x}px, ${position.y}px)`,
+    left: "50%",
+    top: "50%",
+    transform: `translate(-50%, -50%) translate(${position.x}px, ${position.y}px)`,
     zIndex: isExpanded ? 200 : position.zIndex,
     opacity: isExpanded ? 1 : position.opacity,
   };
 
   return (
     <div
-      className="absolute transition-all duration-700 cursor-pointer"
+      ref={nodeRef}
+      className="absolute cursor-pointer will-change-transform"
       style={nodeStyle}
       onClick={(e) => {
         e.stopPropagation();
