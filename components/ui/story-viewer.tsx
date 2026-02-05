@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
 import {
   X,
@@ -97,7 +98,7 @@ function StoryThumbnail({
       )}
       aria-label={`View ${username}'s stories`}
     >
-      <div className="relative w-[72px] h-[72px]">
+      <div className="relative w-[68px] h-[68px] md:w-[72px] md:h-[72px]">
         <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
           {stories.map((_, index) => {
             const startAngle = -90 + index * (segmentDegrees + gapDegrees);
@@ -705,9 +706,14 @@ const StoryViewer = React.forwardRef<HTMLDivElement, StoryViewerProps>(
     ref
   ) => {
     const [isOpen, setIsOpen] = React.useState(false);
+    const [mounted, setMounted] = React.useState(false);
     const [viewedIndices, setViewedIndices] = React.useState<Set<number>>(
       () => new Set()
     );
+
+    React.useEffect(() => {
+      setMounted(true);
+    }, []);
 
     const firstUnviewedIndex = React.useMemo(() => {
       for (let i = 0; i < stories.length; i += 1) {
@@ -716,7 +722,8 @@ const StoryViewer = React.forwardRef<HTMLDivElement, StoryViewerProps>(
       return 0;
     }, [stories.length, viewedIndices]);
 
-    const handleOpen = React.useCallback(() => {
+    const handleOpen = React.useCallback((e?: React.MouseEvent) => {
+      e?.stopPropagation();
       setIsOpen(true);
     }, []);
 
@@ -746,7 +753,7 @@ const StoryViewer = React.forwardRef<HTMLDivElement, StoryViewerProps>(
 
     return (
       <>
-        <div ref={ref} className={className}>
+        <div ref={ref} className={className} onClick={(e) => e.stopPropagation()}>
           <StoryThumbnail
             stories={stories}
             username={username}
@@ -756,8 +763,9 @@ const StoryViewer = React.forwardRef<HTMLDivElement, StoryViewerProps>(
           />
         </div>
 
-        <AnimatePresence>
-          {isOpen && (
+        {mounted &&
+          isOpen &&
+          createPortal(
             <StoryViewerModal
               stories={stories}
               username={username}
@@ -767,9 +775,9 @@ const StoryViewer = React.forwardRef<HTMLDivElement, StoryViewerProps>(
               viewedIndices={viewedIndices}
               onClose={handleClose}
               onStoryChange={handleStoryChange}
-            />
+            />,
+            document.body
           )}
-        </AnimatePresence>
       </>
     );
   }
