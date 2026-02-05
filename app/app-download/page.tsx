@@ -8,16 +8,13 @@ import { AuroraBackground } from "@/components/ui/aurora-background";
 import { MagnetizeButton } from "@/components/ui/magnetize-button";
 import { site } from "@/lib/data";
 import { 
-  Smartphone, 
   Globe, 
   MapPin, 
   Search, 
   Layout, 
   Database, 
-  Download, 
-  ArrowRight 
+  Download
 } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 export default function AppDownloadPage() {
   return (

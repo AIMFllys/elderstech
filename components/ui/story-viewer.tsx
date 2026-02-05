@@ -217,7 +217,12 @@ function StoryContent({
   onImageLoad,
   videoRef,
 }: StoryContentProps) {
+  const [imageSrc, setImageSrc] = React.useState(story.src);
   const showSpinner = isInitialLoading || isBuffering;
+
+  React.useEffect(() => {
+    setImageSrc(story.src);
+  }, [story.src]);
 
   return (
     <>
@@ -251,13 +256,18 @@ function StoryContent({
         />
       ) : (
         <img
-          src={story.src}
+          src={imageSrc}
           alt=""
           className={cn(
             "w-full h-full object-contain transition-opacity duration-200",
             isInitialLoading ? "opacity-0" : "opacity-100"
           )}
           onLoad={onImageLoad}
+          onError={() => {
+            if (imageSrc.endsWith(".png")) {
+              setImageSrc(imageSrc.replace(/\.png$/i, ".jpg"));
+            }
+          }}
         />
       )}
     </>

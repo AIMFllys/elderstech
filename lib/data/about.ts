@@ -47,7 +47,7 @@ export const aboutServiceItems = [
 ];
 
 export const aboutImage =
-  "https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?auto=format&fit=crop&w=900&q=80";
+  "http://husteread.com/storage/files/elderstech/team.capture.example/cooperation.png";
 
 export const aboutCta = {
   title: "立即开始了解",

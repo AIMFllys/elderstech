@@ -9,7 +9,6 @@ interface ServiceItemProps extends AboutService {
     visible: {
       opacity: number;
       y?: number;
-      transition: { duration: number; ease: string };
     };
   };
   delay: number;

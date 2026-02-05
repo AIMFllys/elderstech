@@ -27,36 +27,28 @@ export default function TeamPage() {
     })),
   ];
 
-  // 成员调研动态整体随机图片
-  const storyImages = [
-    "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80",
-  ];
+  const storyImageUrlsFor = (name: string) => {
+    const encoded = encodeURIComponent(name);
+    const baseUrl =
+      "https://husteread.com/storage/files/elderstech/team.capture.example";
+    return [
+      `${baseUrl}/${encoded}.png`,
+      `${baseUrl}/${encoded}%20-%20%E5%89%AF%E6%9C%AC.jpg`,
+      `${baseUrl}/${encoded}%20-%20%E5%89%AF%E6%9C%AC%20-%20%E5%89%AF%E6%9C%AC.jpg`,
+    ];
+  };
 
-  const storyMembers = [
-    ...orderedMembers,
-    ...instructors.filter(
-      (p) => p.name !== "田德生" && p.name !== "王卉" && p.name !== "刘诗雅"
-    ),
-  ];
-
-  const storyUsers = storyMembers.map((person, index) => {
-    const base = (index * 3) % storyImages.length;
+  const storyUsers = orderedMembers.map((person, index) => {
+    const [first, second, third] = storyImageUrlsFor(person.name);
     return {
       username: person.name,
       avatar: person.avatar,
       timestamp: new Date(Date.now() - (index + 1) * 60 * 60 * 1000).toISOString(),
-      stories: [0, 1, 2].map((offset) => ({
-        id: `${person.name}-story-${offset + 1}`,
-        type: "image" as const,
-        src: storyImages[(base + offset) % storyImages.length],
-      })),
+      stories: [
+        { id: `${person.name}-story-1`, type: "image" as const, src: first },
+        { id: `${person.name}-story-2`, type: "image" as const, src: second },
+        { id: `${person.name}-story-3`, type: "image" as const, src: third },
+      ],
     };
   });
 

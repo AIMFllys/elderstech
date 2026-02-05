@@ -22,12 +22,13 @@ export const HighlightGroup: React.FC<HighlightGroupProps> = ({
   const [boxes, setBoxes] = useState<HTMLElement[]>([]);
 
   useEffect(() => {
-    containerRef.current &&
+    if (containerRef.current) {
       setBoxes(
         Array.from(containerRef.current.children).map(
           (el) => el as HTMLElement
         )
       );
+    }
   }, []);
 
   useEffect(() => {

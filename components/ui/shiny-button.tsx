@@ -2,13 +2,13 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import type { Transition, TargetAndTransition, VariantLabels } from "framer-motion";
+import type { Transition } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
 const animationProps = {
-  initial: { "--x": "100%", scale: 0.8 } as any,
-  animate: { "--x": "-100%", scale: 1 } as any,
+  initial: { "--x": "100%", scale: 0.8 },
+  animate: { "--x": "-100%", scale: 1 },
   whileTap: { scale: 0.95 },
   transition: {
     repeat: Infinity,
@@ -66,5 +66,3 @@ export const ShinyButton: React.FC<ShinyButtonProps> = ({
     </motion.button>
   );
 };
-
-export default { ShinyButton };

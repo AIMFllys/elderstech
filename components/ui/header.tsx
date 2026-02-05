@@ -4,7 +4,7 @@ import { Button, buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { MenuToggleIcon } from '@/components/ui/menu-toggle-icon';
 import { useScroll } from "@/hooks/use-scroll";
-import { ThemeToggle } from '@/components/ThemeToggle';
+import { ThemeToggle } from '@/components/layout/theme-toggle';
 
 export function Header() {
 	const [open, setOpen] = React.useState(false);

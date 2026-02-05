@@ -51,7 +51,14 @@ export default function AboutUsSection({
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const serviceItemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
     },
   };
 
@@ -124,7 +131,7 @@ export default function AboutUsSection({
                   secondaryIcon={service.secondaryIcon}
                   title={service.title}
                   description={service.description}
-                  variants={itemVariants}
+                  variants={serviceItemVariants}
                   delay={index * 0.2}
                   position="left"
                 />
@@ -218,7 +225,7 @@ export default function AboutUsSection({
                   secondaryIcon={service.secondaryIcon}
                   title={service.title}
                   description={service.description}
-                  variants={itemVariants}
+                  variants={serviceItemVariants}
                   delay={index * 0.2}
                   position="right"
                 />
