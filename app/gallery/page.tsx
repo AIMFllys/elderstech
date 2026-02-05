@@ -1,7 +1,7 @@
-import { BackLink } from "@/components/BackLink";
-import { ArcGalleryHero } from "@/components/ui/arc-gallery-hero-component";
-import InteractiveSelector from "@/components/ui/interactive-selector";
-import InteractiveBentoGallery from "@/components/ui/interactive-bento-gallery";
+import { BackLink } from "@/components/layout/back-link";
+import { ArcGalleryHero } from "@/components/ui/gallery/arc-gallery-hero-component";
+import InteractiveSelector from "@/components/ui/gallery/interactive-selector";
+import InteractiveBentoGallery from "@/components/ui/gallery/interactive-bento-gallery";
 import { galleryArcImages, galleryMediaItems } from "@/lib/gallery";
 
 export default function GalleryPage() {

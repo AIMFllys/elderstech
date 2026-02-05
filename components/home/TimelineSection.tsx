@@ -1,9 +1,11 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { FeatureCarousel, type ImageSet, type Step } from "@/components/ui/animated-feature-carousel";
+import { FeatureCarousel, type ImageSet, type Step } from "@/components/ui/animated/animated-feature-carousel";
+import { Typewriter } from "@/components/ui/typewriter";
+import { Text_03 } from "@/components/ui/wave-text";
 import { timelineModalImages } from "@/lib/data";
 
 const steps: Step[] = [
@@ -66,7 +68,19 @@ export function TimelineSection() {
   return (
     <section id="timeline" className="py-16 md:py-24 px-4 text-foreground">
       <div className="container mx-auto max-w-5xl text-center mb-10">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">调研思路</h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-3 text-black">
+          <Text_03 text="- 调研思路 -" className="text-black" />
+        </h2>
+        <p className="text-base md:text-lg text-black/70">
+          <Typewriter
+            text={steps.map((step) => step.title)}
+            speed={70}
+            waitTime={1400}
+            deleteSpeed={40}
+            cursorChar="_"
+            className="text-black"
+          />
+        </p>
       </div>
 
       <FeatureCarousel
@@ -75,11 +89,18 @@ export function TimelineSection() {
         renderStepActions={(stepIndex) =>
           stepIndex === 0 ? (
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button size="lg" onClick={() => setModal("start")}>立即开始</Button>
+              <Button
+                size="lg"
+                onClick={() => setModal("start")}
+                className="bg-emerald-600 hover:bg-emerald-700 text-white"
+              >
+                立即开始
+              </Button>
               <Button
                 size="lg"
                 variant="outline"
                 onClick={() => setModal("see")}
+                className="border-emerald-600 text-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-950/30"
               >
                 看如何运作
               </Button>

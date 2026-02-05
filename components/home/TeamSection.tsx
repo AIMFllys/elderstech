@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
+import { AnimatedTooltip } from "@/components/ui/animated/animated-tooltip";
 import { ShinyButton } from "@/components/ui/shiny-button";
 import { teamMembers, instructors, teamIntro } from "@/lib/data";
 

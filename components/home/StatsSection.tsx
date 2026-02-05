@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { AnimatedGradient } from "@/components/ui/animated-gradient-with-svg";
+import { AnimatedGradient } from "@/components/ui/animated/animated-gradient-with-svg";
 import { stats, statsIntro } from "@/lib/data";
 
 const cardColors = [

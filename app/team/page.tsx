@@ -1,4 +1,4 @@
-import { BackLink } from "@/components/BackLink";
+import { BackLink } from "@/components/layout/back-link";
 import { teamMembers, instructors } from "@/lib/data";
 
 export default function TeamPage() {

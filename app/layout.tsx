@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import { Header } from "@/components/ui/header";
+import { ThemeProvider } from "@/components/layout/theme-provider";
+import { Header } from "@/components/layout/header";
 
 export const metadata: Metadata = {
   title: "智慧医养赋能计划",

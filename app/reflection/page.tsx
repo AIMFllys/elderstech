@@ -1,4 +1,4 @@
-import { BackLink } from "@/components/BackLink";
+import { BackLink } from "@/components/layout/back-link";
 
 /** 反思页：调研反思与感悟（来自实践成果申报要求：实践感悟 2–3 篇，每篇 500 字以内） */
 export default function ReflectionPage() {

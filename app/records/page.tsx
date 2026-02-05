@@ -1,4 +1,4 @@
-import { BackLink } from "@/components/BackLink";
+import { BackLink } from "@/components/layout/back-link";
 
 /** 记录页：调研手抄报/手账记录（来自社会实践具体安排：1-2页电子手账，时间地点内容意义） */
 export default function RecordsPage() {

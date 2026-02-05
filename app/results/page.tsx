@@ -1,5 +1,5 @@
-import { BackLink } from "@/components/BackLink";
-import { AnimatedGradient } from "@/components/ui/animated-gradient-with-svg";
+import { BackLink } from "@/components/layout/back-link";
+import { AnimatedGradient } from "@/components/ui/animated/animated-gradient-with-svg";
 import { stats, site, statsIntro } from "@/lib/data";
 
 const cardColors = [

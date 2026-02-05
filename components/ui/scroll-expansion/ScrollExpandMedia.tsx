@@ -59,7 +59,7 @@ export default function ScrollExpandMedia({
       <section className="relative flex flex-col items-center justify-start min-h-[100dvh]">
         <div className="relative w-full flex flex-col items-center min-h-[100dvh]">
           <motion.div
-            className="absolute inset-0 z-0 h-full"
+            className="absolute inset-0 z-0 h-full pointer-events-none"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 - scrollProgress }}
             transition={{ duration: 0.1 }}
@@ -103,7 +103,7 @@ export default function ScrollExpandMedia({
                 <div className="flex flex-col items-center text-center relative z-10 mt-4 transition-none">
                   {date && (
                     <p
-                      className="text-2xl text-blue-200"
+                      className="text-2xl text-emerald-300"
                       style={{
                         transform: `translateX(-${textTranslateX}vw)`,
                       }}
@@ -113,7 +113,7 @@ export default function ScrollExpandMedia({
                   )}
                   {scrollToExpand && (
                     <p
-                      className="text-blue-200 font-medium text-center"
+                      className="text-emerald-300 font-medium text-center"
                       style={{ transform: `translateX(${textTranslateX}vw)` }}
                     >
                       {scrollToExpand}
@@ -128,7 +128,7 @@ export default function ScrollExpandMedia({
                 }`}
               >
                 <motion.h2
-                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-blue-200 transition-none"
+                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-emerald-300 transition-none"
                   style={{
                     transform: `translateX(calc(-${textTranslateX}vw + ${line1Offset}vw))`,
                   }}
@@ -136,7 +136,7 @@ export default function ScrollExpandMedia({
                   {line1}
                 </motion.h2>
                 <motion.h2
-                  className={`text-4xl md:text-5xl lg:text-6xl font-bold text-center text-blue-200 transition-none ${line2IndentClass}`}
+                  className={`text-4xl md:text-5xl lg:text-6xl font-bold text-center text-emerald-300 transition-none ${line2IndentClass}`}
                   style={{
                     transform: `translateX(calc(${textTranslateX}vw + ${line2Offset}vw))`,
                   }}

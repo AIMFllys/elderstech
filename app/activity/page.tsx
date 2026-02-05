@@ -1,4 +1,4 @@
-import { BackLink } from "@/components/BackLink";
+import { BackLink } from "@/components/layout/back-link";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { activitySections, site } from "@/lib/data";
 

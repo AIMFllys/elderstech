@@ -9,6 +9,8 @@ export function useScrollExpand(mediaType: "video" | "image") {
     useState<boolean>(false);
   const [touchStartY, setTouchStartY] = useState<number>(0);
   const [isMobileState, setIsMobileState] = useState<boolean>(false);
+  const [allowScrollOverride, setAllowScrollOverride] =
+    useState<boolean>(false);
 
   useEffect(() => {
     setScrollProgress(0);
@@ -17,6 +19,16 @@ export function useScrollExpand(mediaType: "video" | "image") {
   }, [mediaType]);
 
   useEffect(() => {
+    let allowScrollTimer: NodeJS.Timeout | null = null;
+
+    const handleHashChange = () => {
+      setAllowScrollOverride(true);
+      if (allowScrollTimer) clearTimeout(allowScrollTimer);
+      allowScrollTimer = setTimeout(() => {
+        setAllowScrollOverride(false);
+      }, 1200);
+    };
+
     const handleWheel = (e: WheelEvent) => {
       if (mediaFullyExpanded && e.deltaY < 0 && window.scrollY <= 5) {
         setMediaFullyExpanded(false);
@@ -78,7 +90,7 @@ export function useScrollExpand(mediaType: "video" | "image") {
     };
 
     const handleScroll = (): void => {
-      if (!mediaFullyExpanded) {
+      if (!mediaFullyExpanded && !allowScrollOverride) {
         window.scrollTo(0, 0);
       }
     };
@@ -87,6 +99,7 @@ export function useScrollExpand(mediaType: "video" | "image") {
       passive: false,
     });
     window.addEventListener("scroll", handleScroll as EventListener);
+    window.addEventListener("hashchange", handleHashChange as EventListener);
     window.addEventListener(
       "touchstart",
       handleTouchStart as unknown as EventListener,
@@ -106,6 +119,11 @@ export function useScrollExpand(mediaType: "video" | "image") {
       );
       window.removeEventListener("scroll", handleScroll as EventListener);
       window.removeEventListener(
+        "hashchange",
+        handleHashChange as EventListener
+      );
+      if (allowScrollTimer) clearTimeout(allowScrollTimer);
+      window.removeEventListener(
         "touchstart",
         handleTouchStart as unknown as EventListener
       );
@@ -115,7 +133,7 @@ export function useScrollExpand(mediaType: "video" | "image") {
       );
       window.removeEventListener("touchend", handleTouchEnd as EventListener);
     };
-  }, [scrollProgress, mediaFullyExpanded, touchStartY]);
+  }, [scrollProgress, mediaFullyExpanded, touchStartY, allowScrollOverride]);
 
   useEffect(() => {
     const checkIfMobile = (): void => {
