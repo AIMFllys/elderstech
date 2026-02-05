@@ -27,6 +27,7 @@ export default function TeamPage() {
     })),
   ];
 
+  // 成员调研动态整体随机图片
   const storyImages = [
     "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80",
     "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=800&q=80",

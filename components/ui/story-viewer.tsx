@@ -125,7 +125,7 @@ function StoryThumbnail({
                   "transition-colors duration-300",
                   isViewed || allViewed
                     ? "stroke-muted-foreground/30"
-                    : "stroke-primary"
+                    : "stroke-sky-300"
                 )}
               />
             );
