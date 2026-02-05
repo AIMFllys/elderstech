@@ -136,7 +136,7 @@ export default function RadialOrbitalTimeline({
 
     rotationRef.current = rotationAngle;
     const step = () => {
-      rotationRef.current = (rotationRef.current + 0.35) % 360;
+      rotationRef.current = (rotationRef.current + 0.2) % 360;
       updateNodePositions(rotationRef.current);
       rafRef.current = requestAnimationFrame(step);
     };

@@ -44,7 +44,7 @@ function BentoCard({
 
   return (
     <motion.div
-      className="relative overflow-hidden h-full bg-background dark:bg-background/50 text-black dark:text-foreground"
+      className="relative overflow-hidden h-full bg-background dark:bg-background/50 text-black dark:text-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay }}
@@ -57,7 +57,7 @@ function BentoCard({
         animate="show"
       >
         <motion.h3
-          className="text-sm sm:text-base md:text-lg text-black dark:text-foreground"
+          className="text-sm sm:text-base md:text-lg text-black dark:text-white"
           variants={item}
         >
           {title}
@@ -65,12 +65,12 @@ function BentoCard({
         <motion.div variants={item}>
           <Text_03
             text={String(value)}
-            className="text-left text-2xl sm:text-4xl md:text-5xl font-medium mb-4 text-black dark:text-foreground"
+            className="text-left text-2xl sm:text-4xl md:text-5xl font-medium mb-4 text-black dark:text-white"
           />
         </motion.div>
         {subtitle && (
           <motion.p
-            className="text-sm text-black/80 dark:text-foreground/80"
+            className="text-sm text-black/80 dark:text-white/80"
             variants={item}
           >
             {subtitle}
@@ -105,10 +105,10 @@ export function StatsSection() {
     >
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black dark:text-foreground">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black dark:text-white">
             调研数据
           </h2>
-          <p className="text-black/80 dark:text-foreground/80 max-w-2xl mx-auto">
+          <p className="text-black/80 dark:text-white/80 max-w-2xl mx-auto">
             {statsIntro}
           </p>
         </div>

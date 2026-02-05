@@ -95,7 +95,7 @@ export default function AboutUsSection({
             <Zap className="w-4 h-4" />
             {eyebrow}
           </motion.span>
-          <h2 className="text-4xl md:text-5xl font-light mb-4 text-center text-black dark:text-foreground">
+          <h2 className="text-4xl md:text-5xl font-light mb-4 text-center text-black dark:text-white">
             {title}
           </h2>
           <motion.div
@@ -107,7 +107,7 @@ export default function AboutUsSection({
         </motion.div>
 
         <motion.p
-          className="text-center max-w-2xl mx-auto mb-16 text-black/80 dark:text-foreground/80"
+          className="text-center max-w-2xl mx-auto mb-16 text-black/80 dark:text-white/80"
           variants={itemVariants}
         >
           {description}
@@ -157,13 +157,13 @@ export default function AboutUsSection({
                   {ctaHref ? (
                     <a
                       href={ctaHref}
-                      className="bg-background text-black dark:text-foreground px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium"
+                      className="bg-background text-black dark:text-white px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium"
                     >
                       {ctaLabel} <ArrowRight className="w-4 h-4" />
                     </a>
                   ) : (
                     <motion.button
-                      className="bg-background text-black dark:text-foreground px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium"
+                      className="bg-background text-black dark:text-white px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={onCtaClick}
@@ -235,11 +235,11 @@ export default function AboutUsSection({
             variants={containerVariants}
           >
             <div className="text-center mb-10">
-              <h3 className="text-2xl md:text-3xl font-semibold text-black dark:text-foreground mb-3">
+              <h3 className="text-2xl md:text-3xl font-semibold text-black dark:text-white mb-3">
                 调研数据
               </h3>
               {statsIntro && (
-                <p className="text-black/70 dark:text-foreground/70 max-w-2xl mx-auto">
+                <p className="text-black/70 dark:text-white/70 max-w-2xl mx-auto">
                   {statsIntro}
                 </p>
               )}
@@ -263,10 +263,10 @@ export default function AboutUsSection({
           transition={{ duration: 0.8, delay: 0.5 }}
         >
           <div className="flex-1">
-            <h3 className="text-2xl font-medium mb-2 text-black dark:text-foreground">
+            <h3 className="text-2xl font-medium mb-2 text-black dark:text-white">
               {ctaLabel}
             </h3>
-            <p className="text-black/80 dark:text-foreground/80">{ctaDescription}</p>
+            <p className="text-black/80 dark:text-white/80">{ctaDescription}</p>
           </div>
           {ctaHref ? (
             <MagnetizeButton

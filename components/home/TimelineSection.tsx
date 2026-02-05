@@ -69,17 +69,17 @@ export function TimelineSection() {
   return (
     <section id="timeline" className="py-16 md:py-24 px-4 text-foreground">
       <div className="container mx-auto max-w-5xl text-center mb-10">
-        <h2 className="text-4xl md:text-5xl font-bold mb-3 text-black">
-          <Text_03 text="- 调研思路 -" className="text-black" />
+        <h2 className="text-4xl md:text-5xl font-bold mb-3 text-black dark:text-white">
+          <Text_03 text="- 调研思路 -" className="text-black dark:text-white" />
         </h2>
-        <p className="text-base md:text-lg text-black/70">
+        <p className="text-base md:text-lg text-black/70 dark:text-white/70">
           <Typewriter
             text={steps.map((step) => step.title)}
             speed={70}
             waitTime={1400}
             deleteSpeed={40}
             cursorChar="_"
-            className="text-black"
+            className="text-black dark:text-white"
           />
         </p>
       </div>

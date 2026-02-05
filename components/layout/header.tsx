@@ -56,7 +56,10 @@ export function Header() {
           {links.map((link, i) => (
             <a
               key={i}
-              className={buttonVariants({ variant: "ghost", size: "sm" })}
+              className={cn(
+                buttonVariants({ variant: "ghost", size: "sm" }),
+                "text-black dark:text-white"
+              )}
               href={link.href}
             >
               {link.label}
@@ -89,10 +92,13 @@ export function Header() {
             {links.map((link) => (
               <a
                 key={link.label}
-                className={buttonVariants({
-                  variant: "ghost",
-                  className: "justify-start",
-                })}
+                className={cn(
+                  buttonVariants({
+                    variant: "ghost",
+                    className: "justify-start",
+                  }),
+                  "text-black dark:text-white"
+                )}
                 href={link.href}
                 onClick={handleLinkClick}
               >

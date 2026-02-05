@@ -36,10 +36,10 @@ export function NavCardsSection() {
   return (
     <section id="nav-cards" className="py-16 text-foreground">
       <div className="container mx-auto max-w-4xl text-center mb-4 px-4">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black dark:text-foreground">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black dark:text-white">
           功能导航
         </h2>
-        <p className="text-black/70 dark:text-foreground/70">
+        <p className="text-black/70 dark:text-white/70">
           {navTimelineIntro}
         </p>
       </div>
