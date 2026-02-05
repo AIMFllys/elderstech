@@ -7,4 +7,6 @@ export const site = {
     "探索智慧工具给老年群体带来的双重影响与解决方案，深入养老机构、医院老年科室及老年人家庭开展调研，开发「智护银龄」智能用药与健康导航轻应用原型，为构建中国特色立体化智慧医养服务体系建言献策。",
   logoUrl:
     "http://husteread.com/wp-content/uploads/2025/11/cropped-jimeng-2025-11-26-2200-将图片调整为512x512像素.png",
+  webUrl: "/",
+  appDownloadUrl: "https://husteread.com/storage/files/elderstech/app/elderstech.apk",
 };

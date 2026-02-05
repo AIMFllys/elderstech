@@ -6,7 +6,7 @@ import { Header } from "@/components/layout/header";
 export function HeaderGuard() {
   const pathname = usePathname();
 
-  if (pathname === "/team") {
+  if (pathname === "/team" || pathname === "/app-download") {
     return null;
   }
 

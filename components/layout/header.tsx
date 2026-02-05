@@ -14,7 +14,14 @@ export function Header() {
   const links = [
     { label: "调研思路", href: "#timeline" },
     { label: "调研详情", href: "#about-section" },
-    { label: "调研成果", href: "#stats" },
+    {
+      label: "调研成果",
+      href: "#stats",
+      children: [
+        { label: "调研数据", href: "#stats" },
+        { label: "APP下载", href: "/app-download" },
+      ],
+    },
     { label: "调研展示", href: "#nav-cards" },
     { label: "团队展示", href: "#team" },
     { label: "关于", href: "#footer" },
@@ -53,18 +60,43 @@ export function Header() {
           <span className="text-lg font-semibold text-emerald-600 dark:text-emerald-500">智慧医养赋能计划</span>
         </div>
         <div className="hidden items-center gap-2 md:flex">
-          {links.map((link, i) => (
-            <a
-              key={i}
-              className={cn(
-                buttonVariants({ variant: "ghost", size: "sm" }),
-                "text-black dark:text-white"
-              )}
-              href={link.href}
-            >
-              {link.label}
-            </a>
-          ))}
+          {links.map((link, i) =>
+            link.children ? (
+              <div key={i} className="relative group">
+                <a
+                  className={cn(
+                    buttonVariants({ variant: "ghost", size: "sm" }),
+                    "text-black dark:text-white"
+                  )}
+                  href={link.href}
+                >
+                  {link.label}
+                </a>
+                <div className="absolute left-0 top-full mt-0 min-w-[160px] rounded-xl border border-ink/10 dark:border-ink-dark/20 bg-background/95 dark:bg-background/95 shadow-lg opacity-0 invisible pointer-events-none transition-all duration-150 group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible group-focus-within:pointer-events-auto before:content-[''] before:absolute before:left-0 before:-top-2 before:h-2 before:w-full">
+                  {link.children.map((child) => (
+                    <a
+                      key={child.label}
+                      href={child.href}
+                      className="block px-4 py-2 text-sm text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10"
+                    >
+                      {child.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <a
+                key={i}
+                className={cn(
+                  buttonVariants({ variant: "ghost", size: "sm" }),
+                  "text-black dark:text-white"
+                )}
+                href={link.href}
+              >
+                {link.label}
+              </a>
+            )
+          )}
           <ThemeToggle />
         </div>
         <div className="flex items-center gap-2 md:hidden">
@@ -89,22 +121,58 @@ export function Header() {
           )}
         >
           <div className="grid gap-y-2">
-            {links.map((link) => (
-              <a
-                key={link.label}
-                className={cn(
-                  buttonVariants({
-                    variant: "ghost",
-                    className: "justify-start",
-                  }),
-                  "text-black dark:text-white"
-                )}
-                href={link.href}
-                onClick={handleLinkClick}
-              >
-                {link.label}
-              </a>
-            ))}
+            {links.map((link) =>
+              link.children ? (
+                <div key={link.label} className="grid gap-1">
+                  <a
+                    className={cn(
+                      buttonVariants({
+                        variant: "ghost",
+                        className: "justify-start",
+                      }),
+                      "text-black dark:text-white"
+                    )}
+                    href={link.href}
+                    onClick={handleLinkClick}
+                  >
+                    {link.label}
+                  </a>
+                  <div className="ml-4 grid gap-1">
+                    {link.children.map((child) => (
+                      <a
+                        key={child.label}
+                        className={cn(
+                          buttonVariants({
+                            variant: "ghost",
+                            className: "justify-start text-sm",
+                          }),
+                          "text-black/80 dark:text-white/80"
+                        )}
+                        href={child.href}
+                        onClick={handleLinkClick}
+                      >
+                        {child.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <a
+                  key={link.label}
+                  className={cn(
+                    buttonVariants({
+                      variant: "ghost",
+                      className: "justify-start",
+                    }),
+                    "text-black dark:text-white"
+                  )}
+                  href={link.href}
+                  onClick={handleLinkClick}
+                >
+                  {link.label}
+                </a>
+              )
+            )}
           </div>
         </div>
       </div>

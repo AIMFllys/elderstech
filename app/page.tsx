@@ -3,6 +3,7 @@ import { TimelineSection } from "@/components/home/TimelineSection";
 import { AboutSection } from "@/components/home/AboutSection";
 import { StatsSection } from "@/components/home/StatsSection";
 import { NavCardsSection } from "@/components/home/NavCardsSection";
+import { AppDownloadSection } from "@/components/home/AppDownloadSection";
 import { TeamSection } from "@/components/home/TeamSection";
 import { FooterSection } from "@/components/home/FooterSection";
 import { AuroraBackground } from "@/components/ui/aurora-background";
@@ -13,8 +14,9 @@ export default function Home() {
       <HeroSection />
       <TimelineSection />
       <AboutSection />
-      <StatsSection />
       <NavCardsSection />
+      <AppDownloadSection />
+      <StatsSection />
       <TeamSection />
       <FooterSection />
     </AuroraBackground>
