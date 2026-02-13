@@ -36,3 +36,7 @@ next-env.d.ts
 docs/社会实践/
 
 docs/主脉络.md
+
+.cursor/
+.next/
+.vscode/

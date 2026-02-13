@@ -6,10 +6,10 @@ import { HeaderGuard } from "@/components/layout/header-guard";
 export const metadata: Metadata = {
   title: "智慧医养赋能计划",
   description: "桑梓智护，心驿耆年——智慧医养赋能计划",
+  icons: {
+    icon: '/favicon.png',
+  },
 };
-
-const LOGO_URL =
-  "http://husteread.com/wp-content/uploads/2025/11/cropped-jimeng-2025-11-26-2200-将图片调整为512x512像素.png";
 
 export default function RootLayout({
   children,
@@ -17,7 +17,6 @@ export default function RootLayout({
   return (
     <html lang="zh-CN" suppressHydrationWarning>
       <head>
-        <link rel="icon" href={LOGO_URL} type="image/png" />
         <link
           href="https://fonts.loli.net/css2?family=ZCOOL+XiaoWei&display=swap"
           rel="stylesheet"

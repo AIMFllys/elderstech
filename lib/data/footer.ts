@@ -15,9 +15,9 @@ export const footer = {
   disclaimer:
     "网站如有侵权请告知，网站内容为华科活动项目展示网站，网站内容开源。",
   logoHust:
-    "http://husteread.com/wp-content/uploads/2026/01/华中科技大学.png",
+    "https://husteread.com/wp-content/uploads/2026/01/华中科技大学.png",
   logoTongji:
     "https://ts1.tc.mm.bing.net/th/id/OIP-C.cec2gr3VkKoczOk5EsNcRQHaHM?rs=1&pid=ImgDetMain&o=7&rm=3",
-  iconEmail: "http://husteread.com/wp-content/uploads/2026/01/短信.png",
-  iconQQ: "http://husteread.com/wp-content/uploads/2026/01/QQ.png",
+  iconEmail: "https://husteread.com/wp-content/uploads/2026/01/短信.png",
+  iconQQ: "https://husteread.com/wp-content/uploads/2026/01/QQ.png",
 };
