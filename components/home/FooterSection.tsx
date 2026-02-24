@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { footer } from "@/lib/data";
@@ -7,18 +8,26 @@ import { HighlighterItem, HighlightGroup, Particles } from "@/components/ui/high
 import { Mail, Phone, MessageCircle } from "lucide-react";
 
 export function FooterSection() {
+  const [showParticles, setShowParticles] = useState(false);
+
   return (
     <>
       <section id="footer" className="relative mx-auto mb-20 mt-6 max-w-5xl px-4">
         <HighlightGroup className="group h-full">
           <HighlighterItem className="rounded-3xl p-6">
-            <div className="relative z-20 h-full overflow-hidden rounded-3xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-black">
-              <Particles
-                className="absolute inset-0 -z-10 opacity-10 transition-opacity duration-1000 ease-in-out group-hover:opacity-100"
-                quantity={160}
-                color={"#555555"}
-                vy={-0.2}
-              />
+            <div
+              className="relative z-20 h-full overflow-hidden rounded-3xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-black"
+              onMouseEnter={() => setShowParticles(true)}
+              onMouseLeave={() => setShowParticles(false)}
+            >
+              {showParticles ? (
+                <Particles
+                  className="absolute inset-0 -z-10 opacity-10 transition-opacity duration-1000 ease-in-out group-hover:opacity-100"
+                  quantity={90}
+                  color={"#555555"}
+                  vy={-0.2}
+                />
+              ) : null}
               <div className="flex justify-center">
                 <div className="flex h-full flex-col justify-center gap-10 p-6 md:h-[280px] md:flex-row">
                   <div className="relative mx-auto h-[240px] w-[260px] md:h-[240px] md:w-[260px]">

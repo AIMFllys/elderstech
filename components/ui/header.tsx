@@ -60,17 +60,12 @@ export function Header() {
 		<header
 			className={cn(
 				'fixed top-0 left-1/2 z-[9999] pointer-events-auto w-full max-w-5xl -translate-x-1/2 md:rounded-md md:transition-all md:ease-out bg-transparent border-b border-transparent md:border md:border-transparent',
-				scrolled && !open && 'bg-background/95 backdrop-blur-lg border-border md:top-4 md:max-w-4xl md:shadow',
+				scrolled && !open && 'bg-background/95 backdrop-blur-lg border-border md:shadow',
 				open && 'bg-background/90 backdrop-blur-lg',
 			)}
 		>
 			<nav
-				className={cn(
-					'flex h-14 w-full items-center justify-between px-4 md:h-12 md:transition-all md:ease-out pointer-events-auto',
-					{
-						'md:px-2': scrolled,
-					},
-				)}
+				className="flex h-14 w-full items-center justify-between px-4 md:h-12 md:transition-all md:ease-out pointer-events-auto"
 			>
 				<div className="flex items-center gap-2">
 					<span className="text-lg font-semibold text-emerald-600 dark:text-emerald-500">智慧医养赋能计划</span>

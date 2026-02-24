@@ -36,7 +36,15 @@
 - Next.js 14（App Router）
 - TypeScript（严格模式）
 - Tailwind CSS
-- 静态导出部署（适配宝塔）
+- 静态导出部署（适配腾讯云 Pages / 宝塔）
+
+## 环境要求
+
+| 项目 | 版本 | 说明 |
+|------|------|------|
+| **Node.js** | `20.18.0`（锁定） | 通过 `.nvmrc` / `.node-version` / `engines` 三重约束 |
+| **包管理器** | **npm**（锁定） | 禁止使用 yarn / pnpm，`preinstall` 脚本自动拦截 |
+| **npm 版本** | `>=10.0.0` | Node.js 20.18.0 自带 npm 10.x |
 
 ## 目录结构
 
@@ -137,11 +145,17 @@ npm run build
 # out/ ← 将此目录上传至腾讯云 Pages
 ```
 
-腾讯云 Pages 配置：
-- **框架预设**：Next.js
-- **构建命令**：`npm run build`
-- **输出目录**：`out`
-- **Node.js 版本**：18+（推荐 20.x）
+腾讯云 Pages 构建部署配置（控制台填写）：
+
+| 配置项 | 填写值 | 说明 |
+|--------|--------|------|
+| **框架预设** | `Next.js` | 从下拉框选择 |
+| **根目录** | `/`（留空即可） | 项目根即仓库根目录 |
+| **输出目录** | `out` | Next.js 静态导出默认产物目录 |
+| **编译命令** | `npm run build` | 即 `next build`，自动生成 `out/` |
+| **安装命令** | `npm install` | 必须使用 npm，不要改为 yarn/pnpm |
+
+> **Node.js 版本**：在腾讯云 Pages「环境变量」或「高级设置」中将 Node 版本设为 `20.18.0`，与项目 `.nvmrc` 保持一致。
 
 #### 6. 性能优化建议
 
@@ -179,3 +193,6 @@ components/
 - [ ] 静态资源通过 `public/` 目录引用，无 Node.js 运行时依赖
 - [ ] 页面链接使用尾部斜杠（`/gallery/` 而非 `/gallery`）
 - [ ] 腾讯云 Pages 部署测试通过，所有路由可正常访问
+- [ ] Node.js 版本为 `20.18.0`（`node -v` 验证）
+- [ ] 使用 npm 作为包管理器（非 yarn / pnpm）
+- [ ] `.nvmrc`、`.node-version`、`package.json engines` 版本一致

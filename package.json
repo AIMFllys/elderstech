@@ -2,7 +2,12 @@
   "name": "elderstech",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "20.18.0",
+    "npm": ">=10.0.0"
+  },
   "scripts": {
+    "preinstall": "npx only-allow npm",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

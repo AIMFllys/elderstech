@@ -1,7 +1,6 @@
 ﻿"use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 interface MediaSurfaceProps {
   mediaType: "video" | "image";
@@ -42,11 +41,9 @@ export function MediaSurface({
             allowFullScreen
           />
           <div className="absolute inset-0 z-10" style={{ pointerEvents: "none" }} />
-          <motion.div
-            className="absolute inset-0 bg-black/30 rounded-xl"
-            initial={{ opacity: 0.7 }}
-            animate={{ opacity: 0.5 - scrollProgress * 0.3 }}
-            transition={{ duration: 0.2 }}
+          <div
+            className="absolute inset-0 bg-black/30 rounded-xl transition-opacity duration-200"
+            style={{ opacity: 0.5 - scrollProgress * 0.3 }}
           />
         </div>
       );
@@ -61,18 +58,16 @@ export function MediaSurface({
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
           className="w-full h-full object-cover rounded-xl"
           controls={false}
           disablePictureInPicture
           disableRemotePlayback
         />
         <div className="absolute inset-0 z-10" style={{ pointerEvents: "none" }} />
-        <motion.div
-          className="absolute inset-0 bg-black/30 rounded-xl"
-          initial={{ opacity: 0.7 }}
-          animate={{ opacity: 0.5 - scrollProgress * 0.3 }}
-          transition={{ duration: 0.2 }}
+        <div
+          className="absolute inset-0 bg-black/30 rounded-xl transition-opacity duration-200"
+          style={{ opacity: 0.5 - scrollProgress * 0.3 }}
         />
       </div>
     );
@@ -89,11 +84,9 @@ export function MediaSurface({
         unoptimized
       />
 
-      <motion.div
-        className="absolute inset-0 bg-black/50 rounded-xl"
-        initial={{ opacity: 0.7 }}
-        animate={{ opacity: 0.7 - scrollProgress * 0.3 }}
-        transition={{ duration: 0.2 }}
+      <div
+        className="absolute inset-0 bg-black/50 rounded-xl transition-opacity duration-200"
+        style={{ opacity: 0.7 - scrollProgress * 0.3 }}
       />
     </div>
   );
