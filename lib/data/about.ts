@@ -46,8 +46,7 @@ export const aboutServiceItems = [
   },
 ];
 
-export const aboutImage =
-  "http://husteread.com/storage/files/elderstech/team.capture.example/cooperation.png";
+export const aboutImage = "/assets/about/cooperation.png";
 
 export const aboutCta = {
   title: "立即开始了解",

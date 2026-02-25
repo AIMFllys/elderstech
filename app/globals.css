@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ZCOOL XiaoWei — 子集化本地字体（仅含项目所用 758 字符，162KB） */
+@font-face {
+  font-family: "ZCOOL XiaoWei";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/ZCOOLXiaoWei-subset.woff2") format("woff2");
+}
+
 :root {
   --background: #f8f5f0;
   --foreground: #5a4b3c;

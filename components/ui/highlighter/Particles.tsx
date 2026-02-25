@@ -52,6 +52,7 @@ export const Particles: React.FC<ParticlesProps> = ({
   const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
   const animationFrameRef = useRef<number | null>(null);
+  const isVisibleRef = useRef(true);
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
 
   useEffect(() => {
@@ -62,12 +63,30 @@ export const Particles: React.FC<ParticlesProps> = ({
     animate();
     window.addEventListener("resize", initCanvas);
 
+    // Pause animation when off-screen
+    const el = canvasContainerRef.current;
+    let observer: IntersectionObserver | undefined;
+    if (el) {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          const wasVisible = isVisibleRef.current;
+          isVisibleRef.current = entry.isIntersecting;
+          if (entry.isIntersecting && !wasVisible && animationFrameRef.current === null) {
+            animate();
+          }
+        },
+        { threshold: 0.05 }
+      );
+      observer.observe(el);
+    }
+
     return () => {
       window.removeEventListener("resize", initCanvas);
       if (animationFrameRef.current !== null) {
         window.cancelAnimationFrame(animationFrameRef.current);
         animationFrameRef.current = null;
       }
+      observer?.disconnect();
     };
   }, []);
 
@@ -201,15 +220,23 @@ export const Particles: React.FC<ParticlesProps> = ({
   };
 
   const animate = () => {
+    // Pause when off-screen
+    if (!isVisibleRef.current) {
+      animationFrameRef.current = null;
+      return;
+    }
+
     clearContext();
-    circles.current.forEach((circle: Circle, i: number) => {
+    // Iterate in reverse to safely splice
+    for (let i = circles.current.length - 1; i >= 0; i--) {
+      const circle = circles.current[i];
       const edge = [
         circle.x + circle.translateX - circle.size,
         canvasSize.current.w - circle.x - circle.translateX - circle.size,
         circle.y + circle.translateY - circle.size,
         canvasSize.current.h - circle.y - circle.translateY - circle.size,
       ];
-      const closestEdge = edge.reduce((a, b) => Math.min(a, b));
+      const closestEdge = Math.min(edge[0], edge[1], edge[2], edge[3]);
       const remapClosestEdge = parseFloat(
         remapValue(closestEdge, 0, 20, 0, 1).toFixed(2)
       );
@@ -251,7 +278,7 @@ export const Particles: React.FC<ParticlesProps> = ({
           true
         );
       }
-    });
+    }
     animationFrameRef.current = window.requestAnimationFrame(animate);
   };
 

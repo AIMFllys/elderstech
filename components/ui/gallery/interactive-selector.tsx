@@ -11,36 +11,31 @@ const InteractiveSelector = () => {
     {
       title: "养老机构走访",
       description: "关注医养服务供给与适老化设施",
-      image:
-        "https://images.unsplash.com/photo-1507537362848-9c7e70b7b5c1?auto=format&fit=crop&w=800&q=80",
+      image: "/assets/gallery/images/selector-01.jpg",
       icon: <FaCampground size={24} className="text-white" />,
     },
     {
       title: "居家访谈",
       description: "理解老人真实体验与使用障碍",
-      image:
-        "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80",
+      image: "/assets/gallery/images/gallery-01.jpg",
       icon: <FaFire size={24} className="text-white" />,
     },
     {
       title: "社区健康点",
       description: "追踪智慧设备在基层的应用",
-      image:
-        "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=800&q=80",
+      image: "/assets/gallery/images/selector-03.jpg",
       icon: <FaTint size={24} className="text-white" />,
     },
     {
       title: "医疗场景",
       description: "聚焦慢病管理与随访需求",
-      image:
-        "https://images.unsplash.com/photo-1580281657527-47f249e8f0a7?auto=format&fit=crop&w=800&q=80",
+      image: "/assets/gallery/images/gallery-03.jpg",
       icon: <FaHotTub size={24} className="text-white" />,
     },
     {
       title: "产品共创",
       description: `记录"智护银龄"原型迭代`,
-      image:
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
+      image: "/assets/gallery/images/selector-05.jpg",
       icon: <FaHiking size={24} className="text-white" />,
     },
   ];

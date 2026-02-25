@@ -10,8 +10,7 @@ export const teamMembers: TeamMember[] = [
     college: "基础医学院临床医学五年制2401班",
     phone: "18134035361",
     place: "河北省张家口市康保县永康社区",
-    avatar:
-      "https://husteread.com/storage/files/elderstech/profile/杨佳怡.jpg",
+    avatar: "/assets/avatars/yangjiayi.jpg",
   },
   {
     name: "何佳欢",
@@ -20,8 +19,7 @@ export const teamMembers: TeamMember[] = [
     college: "基础医学院临床医学五年制2505班",
     phone: "14753531433",
     place: "山东省烟台市芝罘区向阳街道",
-    avatar:
-      "https://husteread.com/storage/files/elderstech/profile/何佳欢.jpg",
+    avatar: "/assets/avatars/hejiahuan.jpg",
   },
   {
     name: "丁文轩",
@@ -30,8 +28,7 @@ export const teamMembers: TeamMember[] = [
     college: "基础医学院临床医学五年制2405班",
     phone: "18356015183",
     place: "合肥市瑶海区新站高新区瑶海街道",
-    avatar:
-      "https://husteread.com/storage/files/elderstech/profile/丁文轩.jpg",
+    avatar: "/assets/avatars/dingwenxuan.jpg",
   },
   {
     name: "赵梓舒",
@@ -40,8 +37,7 @@ export const teamMembers: TeamMember[] = [
     college: "基础医学院临床医学五年制2501班",
     phone: "15754873002",
     place: "内蒙古自治区呼和浩特市赛罕区中专路街道",
-    avatar:
-      "https://husteread.com/storage/files/elderstech/profile/赵梓舒.jpg",
+    avatar: "/assets/avatars/zhaozishu.jpg",
   },
   {
     name: "李文龙",
@@ -50,8 +46,7 @@ export const teamMembers: TeamMember[] = [
     college: "基础医学院儿科2501班",
     phone: "13258602586",
     place: "黑龙江省佳木斯市向阳区永泰社区",
-    avatar:
-      "https://husteread.com/storage/files/elderstech/profile/李文龙.jpg",
+    avatar: "/assets/avatars/liwenlong.jpg",
   },
   {
     name: "张星睿",
@@ -60,8 +55,7 @@ export const teamMembers: TeamMember[] = [
     college: "药学院药学2402班",
     phone: "18627937077",
     place: "黑龙江省佳木斯市向阳区永红社区",
-    avatar:
-      "https://husteread.com/storage/files/elderstech/profile/张星睿.jpg",
+    avatar: "/assets/avatars/zhangxingrui.jpg",
   },
   {
     name: "罗宇然",
@@ -70,8 +64,7 @@ export const teamMembers: TeamMember[] = [
     college: "药学院生药2401",
     phone: "18105488483",
     place: "贵州省黔南州罗甸县沫阳镇跃进村",
-    avatar:
-      "https://husteread.com/storage/files/elderstech/profile/罗宇然.jpg",
+    avatar: "/assets/avatars/luoyuran.jpg",
   },
   {
     name: "周嘉琦",
@@ -80,8 +73,7 @@ export const teamMembers: TeamMember[] = [
     college: "基础医学院临床医学八年制2503班",
     phone: "13707180127",
     place: "武汉市青山区红卫路街道翠园社区",
-    avatar:
-      "https://husteread.com/storage/files/elderstech/profile/周嘉琦.jpg",
+    avatar: "/assets/avatars/zhoujiaqi.jpg",
   },
   {
     name: "孔德羽",
@@ -90,8 +82,7 @@ export const teamMembers: TeamMember[] = [
     college: "基础医学院基础医学（强基）2501",
     phone: "15245059981",
     place: "黑龙江省哈尔滨市道里区丽水社区",
-    avatar:
-      "https://husteread.com/storage/files/elderstech/profile/孔德羽.jpg",
+    avatar: "/assets/avatars/kongdeyu.jpg",
   },
   {
     name: "杨静萱",
@@ -100,8 +91,7 @@ export const teamMembers: TeamMember[] = [
     college: "基础医学院基医学（强基）2301",
     phone: "13921906688",
     place: "江苏省扬州市扬子津街道桃源社区",
-    avatar:
-      "https://husteread.com/storage/files/elderstech/profile/杨静萱.jpg",
+    avatar: "/assets/avatars/yangjingxuan.jpg",
   },
 ];
 
@@ -113,18 +103,18 @@ export const instructors = [
     name: "田德生",
     title: "基础医学院党委副书记",
     research: "思想政治教育",
-    avatar: "https://husteread.com/storage/files/elderstech/profile/田.png",
+    avatar: "/assets/avatars/tian.png",
   },
   {
     name: "刘诗雅",
     title: "无",
     research: "无",
-    avatar: "https://husteread.com/storage/files/elderstech/profile/刘.png",
+    avatar: "/assets/avatars/liu.png",
   },
   {
     name: "王卉",
     title: "基础医学院团委书记",
     research: "大学生思想政治教育",
-    avatar: "https://husteread.com/storage/files/elderstech/profile/王卉.jpg",
+    avatar: "/assets/avatars/wanghui.jpg",
   },
 ];

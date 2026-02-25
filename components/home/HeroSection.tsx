@@ -6,12 +6,9 @@ import { MagnetizeButton } from "@/components/ui/magnetize-button";
 import { useRouter } from "next/navigation";
 import { Sparkles, Compass } from "lucide-react";
 
-const HERO_MEDIA =
-  "https://me7aitdbxq.ufs.sh/f/2wsMIGDMQRdYuZ5R8ahEEZ4aQK56LizRdfBSqeDMsmUIrJN1";
-const HERO_POSTER =
-  "https://images.pexels.com/videos/5752729/space-earth-universe-cosmos-5752729.jpeg";
-const HERO_BG =
-  "https://me7aitdbxq.ufs.sh/f/2wsMIGDMQRdYMNjMlBUYHaeYpxduXPVNwf8mnFA61L7rkcoS";
+const HERO_MEDIA = "/assets/hero/hero-video.mp4";
+const HERO_POSTER = "/assets/hero/hero-poster.jpg";
+const HERO_BG = "/assets/hero/hero-bg.jpg";
 
 export function HeroSection() {
   const router = useRouter();

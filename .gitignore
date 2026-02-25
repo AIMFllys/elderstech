@@ -33,6 +33,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# build artifacts
+out.zip
+
 docs/社会实践/
 
 docs/主脉络.md

@@ -22,8 +22,9 @@ export default function AboutUsSection({
 }: AboutSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
-  const isStatsInView = useInView(statsRef, { once: false, amount: 0.3 });
+  // once: true — only animate in once, avoid repeated renders on scroll
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+  const isStatsInView = useInView(statsRef, { once: true, amount: 0.3 });
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -32,8 +33,8 @@ export default function AboutUsSection({
 
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const y2 = useTransform(scrollYProgress, [0, 1], [0, 50]);
-  const rotate1 = useTransform(scrollYProgress, [0, 1], [0, 20]);
-  const rotate2 = useTransform(scrollYProgress, [0, 1], [0, -20]);
+  // Removed rotate transforms — they were causing constant layout thrash
+  // for purely decorative blurred blobs that barely need rotation
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -68,24 +69,35 @@ export default function AboutUsSection({
       ref={sectionRef}
       className="w-full py-24 px-4 text-foreground overflow-hidden relative"
     >
+      {/* Decorative blobs — use CSS translateY only, no rotate */}
       <motion.div
         className="absolute top-20 left-10 w-64 h-64 rounded-full bg-[#88734C]/5 blur-3xl"
-        style={{ y: y1, rotate: rotate1 }}
+        style={{ y: y1 }}
       />
       <motion.div
         className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-[#A9BBC8]/5 blur-3xl"
-        style={{ y: y2, rotate: rotate2 }}
+        style={{ y: y2 }}
       />
-      <motion.div
-        className="absolute top-1/2 left-1/4 w-4 h-4 rounded-full bg-[#88734C]/30"
-        animate={{ y: [0, -15, 0], opacity: [0.5, 1, 0.5] }}
-        transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+      {/* Floating dots — use CSS animation instead of framer-motion infinite */}
+      <div
+        className="absolute top-1/2 left-1/4 w-4 h-4 rounded-full bg-[#88734C]/30 animate-float-slow"
       />
-      <motion.div
-        className="absolute bottom-1/3 right-1/4 w-6 h-6 rounded-full bg-[#A9BBC8]/30"
-        animate={{ y: [0, 20, 0], opacity: [0.5, 1, 0.5] }}
-        transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 1 }}
+      <div
+        className="absolute bottom-1/3 right-1/4 w-6 h-6 rounded-full bg-[#A9BBC8]/30 animate-float-slow-alt"
       />
+      <style jsx>{`
+        @keyframes float-slow {
+          0%, 100% { transform: translateY(0); opacity: 0.5; }
+          50% { transform: translateY(-15px); opacity: 1; }
+        }
+        @keyframes float-slow-alt {
+          0%, 100% { transform: translateY(0); opacity: 0.5; }
+          50% { transform: translateY(20px); opacity: 1; }
+        }
+        .animate-float-slow { animation: float-slow 3s ease-in-out infinite; }
+        .animate-float-slow-alt { animation: float-slow-alt 4s ease-in-out 1s infinite; }
+      `}</style>
+
       <motion.div
         className="container mx-auto max-w-6xl relative z-10"
         initial="hidden"
@@ -202,16 +214,13 @@ export default function AboutUsSection({
                 style={{ y: y2 }}
               ></motion.div>
 
-              <motion.div
-                className="absolute -top-10 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#88734C]"
-                animate={{ y: [0, -10, 0], opacity: [0.5, 1, 0.5] }}
-                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-              ></motion.div>
-              <motion.div
-                className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#A9BBC8]"
-                animate={{ y: [0, 10, 0], opacity: [0.5, 1, 0.5] }}
-                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 0.5 }}
-              ></motion.div>
+              {/* Replaced infinite framer motion with CSS animations */}
+              <div
+                className="absolute -top-10 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#88734C] animate-float-slow"
+              ></div>
+              <div
+                className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#A9BBC8] animate-float-slow-alt"
+              ></div>
             </motion.div>
           </div>
 
@@ -309,7 +318,8 @@ function StatCard({
   delay: number;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const isCardInView = useInView(cardRef, { once: false, amount: 0.4 });
+  // once: true — animate the counter only once
+  const isCardInView = useInView(cardRef, { once: true, amount: 0.4 });
   const numericValue = Number.parseFloat(stat.value);
   const springValue = useSpring(0, { stiffness: 60, damping: 12 });
   const displayValue = useTransform(springValue, (latest) =>
@@ -320,8 +330,6 @@ function StatCard({
     if (!Number.isFinite(numericValue)) return;
     if (isCardInView) {
       springValue.set(numericValue);
-    } else {
-      springValue.set(0);
     }
   }, [isCardInView, numericValue, springValue]);
 

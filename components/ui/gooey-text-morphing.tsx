@@ -20,6 +20,7 @@ export function GooeyText({
 }: GooeyTextProps) {
   const text1Ref = React.useRef<HTMLSpanElement>(null);
   const text2Ref = React.useRef<HTMLSpanElement>(null);
+  const containerRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     let textIndex = 0;
@@ -27,6 +28,7 @@ export function GooeyText({
     let morph = 0;
     let cooldown = cooldownTime;
     let rafId = 0;
+    let isVisible = true;
 
     const setMorph = (fraction: number) => {
       const safeFraction = Math.max(0.0001, Math.min(1, fraction));
@@ -64,6 +66,10 @@ export function GooeyText({
     };
 
     function animate() {
+      if (!isVisible) {
+        rafId = 0;
+        return;
+      }
       rafId = requestAnimationFrame(animate);
       const newTime = new Date();
       const dt = (newTime.getTime() - time.getTime()) / 1000;
@@ -97,15 +103,35 @@ export function GooeyText({
 
     setTexts(textIndex);
     doCooldown();
+
+    // IntersectionObserver to pause animation when off-screen
+    const el = containerRef.current;
+    let observer: IntersectionObserver | undefined;
+    if (el) {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          isVisible = entry.isIntersecting;
+          if (isVisible && !rafId) {
+            time = new Date();
+            animate();
+          }
+        },
+        { threshold: 0.1 }
+      );
+      observer.observe(el);
+    }
+
     animate();
 
     return () => {
       if (rafId) cancelAnimationFrame(rafId);
+      rafId = 0;
+      observer?.disconnect();
     };
   }, [texts, morphTime, cooldownTime]);
 
   return (
-    <div className={cn("relative", className)}>
+    <div ref={containerRef} className={cn("relative", className)}>
       <svg className="absolute h-0 w-0" aria-hidden="true" focusable="false">
         <defs>
           <filter id="threshold">

@@ -42,18 +42,12 @@ const steps: Step[] = [
 
 const images: ImageSet = {
   alt: "调研过程展示",
-  step1img1:
-    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1740&auto=format&fit=crop",
-  step1img2:
-    "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1740&auto=format&fit=crop",
-  step2img1:
-    "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1661&auto=format&fit=crop",
-  step2img2:
-    "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1674&auto=format&fit=crop",
-  step3img:
-    "https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1740&auto=format&fit=crop",
-  step4img:
-    "https://images.unsplash.com/photo-1487014679447-9f8336841d58?q=80&w=1742&auto=format&fit=crop",
+  step1img1: "/assets/timeline/step1-img1.jpg",
+  step1img2: "/assets/timeline/step1-img2.jpg",
+  step2img1: "/assets/timeline/step2-img1.jpg",
+  step2img2: "/assets/timeline/step2-img2.jpg",
+  step3img: "/assets/timeline/step3-img.jpg",
+  step4img: "/assets/timeline/step4-img.jpg",
 };
 
 export function TimelineSection() {
@@ -63,8 +57,8 @@ export function TimelineSection() {
     modal === "see"
       ? timelineModalImages.seeHowItWorks
       : modal === "start"
-      ? timelineModalImages.getStarted
-      : null;
+        ? timelineModalImages.getStarted
+        : null;
 
   return (
     <section id="timeline" className="py-16 md:py-24 px-4 text-foreground">

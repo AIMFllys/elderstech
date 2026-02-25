@@ -15,7 +15,12 @@ const nextConfig = {
 
   // 实验性优化：减少客户端 JS 大小
   experimental: {
-    optimizePackageImports: ['lucide-react', 'framer-motion', 'react-icons'],
+    optimizePackageImports: [
+      'lucide-react',
+      'framer-motion',
+      'react-icons',
+      '@tabler/icons-react',
+    ],
   },
 };
 

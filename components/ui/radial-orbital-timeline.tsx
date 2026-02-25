@@ -28,6 +28,7 @@ export default function RadialOrbitalTimeline({
   const rotationRef = useRef(0);
   const rafRef = useRef<number | null>(null);
   const tweenRef = useRef<number | null>(null);
+  const isVisibleRef = useRef(true);
 
   const orbitSize = useDimensions(orbitRef);
   const radius = useMemo(() => {
@@ -102,7 +103,7 @@ export default function RadialOrbitalTimeline({
       tweenRef.current = null;
     }
 
-    const animate = (now: number) => {
+    const animateTween = (now: number) => {
       const t = Math.min(1, (now - startTime) / duration);
       const eased = 1 - Math.pow(1 - t, 3);
       const current = (startRotation + delta * eased + 360) % 360;
@@ -111,24 +112,28 @@ export default function RadialOrbitalTimeline({
       updateNodePositions(current);
 
       if (t < 1) {
-        tweenRef.current = requestAnimationFrame(animate);
+        tweenRef.current = requestAnimationFrame(animateTween);
       }
     };
 
-    tweenRef.current = requestAnimationFrame(animate);
+    tweenRef.current = requestAnimationFrame(animateTween);
   };
 
   const calculateNodePosition = (angle: number) => {
     const radian = (angle * Math.PI) / 180;
 
-    const x = radius * Math.cos(radian) + centerOffset.x;
-    const y = radius * Math.sin(radian) + centerOffset.y;
+    const rawX = radius * Math.cos(radian) + centerOffset.x;
+    const rawY = radius * Math.sin(radian) + centerOffset.y;
+
+    const x = Number(rawX.toFixed(4));
+    const y = Number(rawY.toFixed(4));
 
     const zIndex = Math.round(100 + 50 * Math.cos(radian));
-    const opacity = Math.max(
+    const opacityRaw = Math.max(
       0.4,
       Math.min(1, 0.4 + 0.6 * ((1 + Math.sin(radian)) / 2))
     );
+    const opacity = Number(opacityRaw.toFixed(4));
 
     return { x, y, zIndex, opacity };
   };
@@ -150,6 +155,22 @@ export default function RadialOrbitalTimeline({
     [baseAngles, calculateNodePosition, timelineData]
   );
 
+  // IntersectionObserver for visibility-based pause
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(el);
+
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     if (!autoRotate) {
       if (rafRef.current) {
@@ -161,8 +182,11 @@ export default function RadialOrbitalTimeline({
 
     rotationRef.current = rotationAngle;
     const step = () => {
-      rotationRef.current = (rotationRef.current + 0.12) % 360;
-      updateNodePositions(rotationRef.current);
+      // Skip computation when not visible, but keep the loop alive
+      if (isVisibleRef.current) {
+        rotationRef.current = (rotationRef.current + 0.12) % 360;
+        updateNodePositions(rotationRef.current);
+      }
       rafRef.current = requestAnimationFrame(step);
     };
 
@@ -229,12 +253,12 @@ export default function RadialOrbitalTimeline({
             {timelineData.map((item, index) => {
               const angle = baseAngles[index] ?? 0;
               const position = calculateNodePosition(angle + rotationAngle);
-            const isExpanded = expandedItems[item.id];
-            const isRelated = isRelatedToActive(item.id);
-            const isPulsing = pulseEffect[item.id];
-            const relatedItems = item.relatedIds
-              .map((id) => timelineData.find((t) => t.id === id))
-              .filter(Boolean) as TimelineItem[];
+              const isExpanded = expandedItems[item.id];
+              const isRelated = isRelatedToActive(item.id);
+              const isPulsing = pulseEffect[item.id];
+              const relatedItems = item.relatedIds
+                .map((id) => timelineData.find((t) => t.id === id))
+                .filter(Boolean) as TimelineItem[];
 
               return (
                 <OrbitalNode

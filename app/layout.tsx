@@ -17,12 +17,6 @@ export default function RootLayout({
   return (
     <html lang="zh-CN" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.loli.net" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://fonts.loli.net" />
-        <link
-          href="https://fonts.loli.net/css2?family=ZCOOL+XiaoWei&display=swap"
-          rel="stylesheet"
-        />
         <meta name="renderer" content="webkit" />
         <script
           dangerouslySetInnerHTML={{

@@ -112,7 +112,7 @@ export function StatsSection() {
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
         >
           {stats.map((item, i) => {
             const colors = cardColors[i % cardColors.length];

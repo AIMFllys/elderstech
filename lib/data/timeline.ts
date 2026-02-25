@@ -32,15 +32,14 @@ export const timelinePhases = [
 
 /** 主脉络：按钮点击展示的图片 */
 export const timelineModalImages = {
-  seeHowItWorks: "https://husteread.com/storage/files/elderstech/PPT/07.png",
-  getStarted: "https://husteread.com/storage/files/elderstech/PPT/011.png",
+  seeHowItWorks: "/assets/timeline/ppt-07.png",
+  getStarted: "/assets/timeline/ppt-011.png",
 };
 
 export const timelineSummary =
   "集中指导、分散调研，成员返乡开展实地调研，开发组同步推进应用原型与产品设计。";
 
-export const timelineMapImage =
-  "https://images.unsplash.com/photo-1502920514313-52581002a659?auto=format&fit=crop&w=1200&q=80";
+export const timelineMapImage = "/assets/timeline/map-bg.jpg";
 
 export const timelineMilestones = [
   {
