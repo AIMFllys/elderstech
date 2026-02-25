@@ -33,7 +33,7 @@
 
 ## 技术栈
 
-- Next.js 14（App Router）
+- Next.js 16（App Router）
 - TypeScript（严格模式）
 - Tailwind CSS
 - 静态导出部署（适配腾讯云 Pages / 宝塔）
