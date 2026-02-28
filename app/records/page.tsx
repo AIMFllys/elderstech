@@ -1,32 +1,109 @@
-import { BackLink } from "@/components/layout/back-link";
+"use client";
 
-/** 记录页：调研手抄报/手账记录（来自社会实践具体安排：1-2页电子手账，时间地点内容意义） */
+import { InteractiveSelector } from "@/components/ui/interactive-selector";
+import Testimonials from "@/components/ui/testimonials-columns-1";
+import { Image as ImageIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
+import { FooterSection } from "@/components/home/FooterSection";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
+
 export default function RecordsPage() {
+  const router = useRouter();
+
+  const bottomOptions = [
+    {
+      title: "活动纪实",
+      description: "成员何佳欢",
+      image: encodeURI("/实践成果/日志/何佳欢_8-1.jpg"),
+      icon: <ImageIcon size={24} className="text-white" />
+    },
+    {
+      title: "活动纪实",
+      description: "成员何佳欢",
+      image: encodeURI("/实践成果/日志/何佳欢_8-2.jpg"),
+      icon: <ImageIcon size={24} className="text-white" />
+    },
+    {
+      title: "活动纪实",
+      description: "成员周嘉琪",
+      image: encodeURI("/实践成果/日志/周嘉琪_1.png"),
+      icon: <ImageIcon size={24} className="text-white" />
+    },
+    {
+      title: "活动纪实",
+      description: "成员张星睿",
+      image: encodeURI("/实践成果/日志/张星睿_3-1.jpg"),
+      icon: <ImageIcon size={24} className="text-white" />
+    },
+    {
+      title: "活动纪实",
+      description: "成员张星睿",
+      image: encodeURI("/实践成果/日志/张星睿_3-2.jpg"),
+      icon: <ImageIcon size={24} className="text-white" />
+    },
+    {
+      title: "活动纪实",
+      description: "成员张星睿",
+      image: encodeURI("/实践成果/日志/张星睿_3-3.jpg"),
+      icon: <ImageIcon size={24} className="text-white" />
+    },
+    {
+      title: "活动纪实",
+      description: "成员李文龙",
+      image: encodeURI("/实践成果/日志/李文龙_4.jpg"),
+      icon: <ImageIcon size={24} className="text-white" />
+    },
+    {
+      title: "活动纪实",
+      description: "成员杨佳怡",
+      image: encodeURI("/实践成果/日志/杨佳怡_6.jpg"),
+      icon: <ImageIcon size={24} className="text-white" />
+    },
+    {
+      title: "活动纪实",
+      description: "成员杨静萱",
+      image: encodeURI("/实践成果/日志/杨静萱_7.png"),
+      icon: <ImageIcon size={24} className="text-white" />
+    },
+    {
+      title: "活动纪实",
+      description: "成员罗宇然",
+      image: encodeURI("/实践成果/日志/罗宇然_5.png"),
+      icon: <ImageIcon size={24} className="text-white" />
+    },
+    {
+      title: "活动纪实",
+      description: "成员赵梓舒",
+      image: encodeURI("/实践成果/日志/赵梓舒_2.jpg"),
+      icon: <ImageIcon size={24} className="text-white" />
+    }
+  ];
+
   return (
-    <main className="min-h-screen bg-paper dark:bg-paper-dark text-ink dark:text-ink-dark py-12 px-4">
-      <div className="container mx-auto max-w-3xl">
-        <BackLink />
-        <h1 className="text-3xl md:text-4xl font-bold mb-4">调研记录</h1>
-        <p className="text-foreground/80 mb-12">
-          调研手抄报与电子手账记录：形式为 1–2 页电子手账，需包括时间、地点、内容、意义。
-        </p>
-        <section className="space-y-6">
-          <div className="p-6 rounded-xl bg-background dark:bg-background border border-ink/10">
-            <h2 className="text-lg font-semibold text-hust mb-2">提交要求</h2>
-            <ul className="text-sm text-foreground/80 space-y-2 list-disc list-inside">
-              <li>形式：1–2 页电子手账</li>
-              <li>内容要素：时间、地点、内容、意义</li>
-              <li>截止时间：2.10</li>
-              <li>模板参考：小红书中后两页黑色底图风格</li>
-            </ul>
-          </div>
-          <div className="p-6 rounded-xl bg-background dark:bg-background border border-ink/10">
-            <p className="text-sm text-foreground/80">
-              实地走访与采访记录将在此展示：所去地点的智能化建设与应用、带来的方便，以及采访问题与答案。程序设计在集中收集实践所得意见后展开。
-            </p>
-          </div>
-        </section>
+    <main className="min-h-screen bg-[#222] dark:bg-[#111] relative w-full overflow-hidden">
+      <button
+        onClick={() => router.back()}
+        className="absolute top-6 left-6 z-50 p-2 rounded-full bg-black/30 backdrop-blur-md text-white hover:bg-black/50 transition-colors"
+      >
+        <ArrowLeft size={24} />
+      </button>
+      <div className="absolute top-6 right-6 z-50">
+        <ThemeToggle />
       </div>
+
+      <Testimonials />
+
+      <div className="pb-20">
+        <InteractiveSelector
+          title="实践日志合影"
+          description="团队走访记录，每一张留影都映出智爱相聚的美好片段"
+          options={bottomOptions}
+          className="mt-6 border-t border-white/10"
+        />
+      </div>
+
+      <FooterSection compact />
     </main>
   );
 }

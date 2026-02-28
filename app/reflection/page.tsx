@@ -1,10 +1,11 @@
 import { BackLink } from "@/components/layout/back-link";
+import { FooterSection } from "@/components/home/FooterSection";
 
 /** 反思页：调研反思与感悟（来自实践成果申报要求：实践感悟 2–3 篇，每篇 500 字以内） */
 export default function ReflectionPage() {
   return (
     <main className="min-h-screen bg-paper dark:bg-paper-dark text-ink dark:text-ink-dark py-12 px-4">
-      <div className="container mx-auto max-w-3xl">
+      <div className="container mx-auto max-w-3xl mb-20">
         <BackLink />
         <h1 className="text-3xl md:text-4xl font-bold mb-4">调研反思</h1>
         <p className="text-foreground/80 mb-12">
@@ -25,6 +26,7 @@ export default function ReflectionPage() {
           </div>
         </section>
       </div>
+      <FooterSection compact />
     </main>
   );
 }

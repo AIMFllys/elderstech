@@ -6,7 +6,7 @@ import { Header } from "@/components/layout/header";
 export function HeaderGuard() {
   const pathname = usePathname();
 
-  if (pathname === "/team" || pathname === "/app-download") {
+  if (/^\/(team|app-download|reports|gallery|records)(\/)?$/.test(pathname)) {
     return null;
   }
 

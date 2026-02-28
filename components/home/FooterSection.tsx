@@ -7,80 +7,82 @@ import { footer } from "@/lib/data";
 import { HighlighterItem, HighlightGroup, Particles } from "@/components/ui/highlighter/index";
 import { Mail, Phone, MessageCircle } from "lucide-react";
 
-export function FooterSection() {
+export function FooterSection({ compact = false }: { compact?: boolean }) {
   const [showParticles, setShowParticles] = useState(false);
 
   return (
     <>
-      <section id="footer" className="relative mx-auto mb-20 mt-6 max-w-5xl px-4">
-        <HighlightGroup className="group h-full">
-          <HighlighterItem className="rounded-3xl p-6">
-            <div
-              className="relative z-20 h-full overflow-hidden rounded-3xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-black"
-              onMouseEnter={() => setShowParticles(true)}
-              onMouseLeave={() => setShowParticles(false)}
-            >
-              {showParticles ? (
-                <Particles
-                  className="absolute inset-0 -z-10 opacity-10 transition-opacity duration-1000 ease-in-out group-hover:opacity-100"
-                  quantity={90}
-                  color={"#555555"}
-                  vy={-0.2}
-                />
-              ) : null}
-              <div className="flex justify-center">
-                <div className="flex h-full flex-col justify-center gap-10 p-6 md:h-[280px] md:flex-row">
-                  <div className="relative mx-auto h-[240px] w-[260px] md:h-[240px] md:w-[260px]">
-                    <div className="absolute left-1/2 top-1/2 h-14 w-14 -translate-x-1/2 -translate-y-1/2 rounded-full bg-hust/20" />
-                    <div className="absolute left-6 top-10 rounded-3xl border border-slate-400 bg-slate-200 px-2 py-1.5 text-xs opacity-70 dark:border-slate-600 dark:bg-slate-800">
-                      实地访谈
+      {!compact && (
+        <section id="footer" className="relative mx-auto mb-20 mt-6 max-w-5xl px-4">
+          <HighlightGroup className="group h-full">
+            <HighlighterItem className="rounded-3xl p-6">
+              <div
+                className="relative z-20 h-full overflow-hidden rounded-3xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-black"
+                onMouseEnter={() => setShowParticles(true)}
+                onMouseLeave={() => setShowParticles(false)}
+              >
+                {showParticles ? (
+                  <Particles
+                    className="absolute inset-0 -z-10 opacity-10 transition-opacity duration-1000 ease-in-out group-hover:opacity-100"
+                    quantity={90}
+                    color={"#555555"}
+                    vy={-0.2}
+                  />
+                ) : null}
+                <div className="flex justify-center">
+                  <div className="flex h-full flex-col justify-center gap-10 p-6 md:h-[280px] md:flex-row">
+                    <div className="relative mx-auto h-[240px] w-[260px] md:h-[240px] md:w-[260px]">
+                      <div className="absolute left-1/2 top-1/2 h-14 w-14 -translate-x-1/2 -translate-y-1/2 rounded-full bg-hust/20" />
+                      <div className="absolute left-6 top-10 rounded-3xl border border-slate-400 bg-slate-200 px-2 py-1.5 text-xs opacity-70 dark:border-slate-600 dark:bg-slate-800">
+                        实地访谈
+                      </div>
+                      <div className="absolute right-6 top-16 rounded-3xl border border-slate-400 bg-slate-200 px-2 py-1.5 text-xs opacity-70 dark:border-slate-600 dark:bg-slate-800">
+                        产品共创
+                      </div>
+                      <div className="absolute left-10 bottom-12 rounded-3xl border border-slate-400 bg-slate-200 px-2 py-1.5 text-xs opacity-70 dark:border-slate-600 dark:bg-slate-800">
+                        数据分析
+                      </div>
+                      <div className="absolute right-8 bottom-6 rounded-3xl border border-slate-400 bg-slate-200 px-2 py-1.5 text-xs opacity-70 dark:border-slate-600 dark:bg-slate-800">
+                        需求归纳
+                      </div>
                     </div>
-                    <div className="absolute right-6 top-16 rounded-3xl border border-slate-400 bg-slate-200 px-2 py-1.5 text-xs opacity-70 dark:border-slate-600 dark:bg-slate-800">
-                      产品共创
-                    </div>
-                    <div className="absolute left-10 bottom-12 rounded-3xl border border-slate-400 bg-slate-200 px-2 py-1.5 text-xs opacity-70 dark:border-slate-600 dark:bg-slate-800">
-                      数据分析
-                    </div>
-                    <div className="absolute right-8 bottom-6 rounded-3xl border border-slate-400 bg-slate-200 px-2 py-1.5 text-xs opacity-70 dark:border-slate-600 dark:bg-slate-800">
-                      需求归纳
-                    </div>
-                  </div>
 
-                  <div className="flex h-full flex-col justify-center p-2 md:ml-10 md:w-[420px]">
-                    <div className="flex flex-col items-center md:items-start">
-                      <h3 className="mt-6 pb-1 font-bold">
-                        <span className="text-2xl md:text-4xl">
-                          一起关注智慧医养的真实需求
+                    <div className="flex h-full flex-col justify-center p-2 md:ml-10 md:w-[420px]">
+                      <div className="flex flex-col items-center md:items-start">
+                        <h3 className="mt-6 pb-1 font-bold">
+                          <span className="text-2xl md:text-4xl">
+                            一起关注智慧医养的真实需求
+                          </span>
+                        </h3>
+                      </div>
+                      <p className="mb-4 text-slate-400">
+                        欢迎通过邮件或 QQ 交流调研心得与合作建议。
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <a
+                          href={`mailto:${footer.email}`}
+                          className="inline-flex items-center gap-2 rounded-md bg-hust px-4 py-2 text-white"
+                        >
+                          <Mail className="h-4 w-4" />
+                          写邮件
+                        </a>
+                        <span className="inline-flex items-center gap-2 rounded-md border border-slate-300 px-4 py-2 text-slate-600 dark:border-slate-700 dark:text-slate-300">
+                          <MessageCircle className="h-4 w-4" />
+                          QQ：{footer.qq}
                         </span>
-                      </h3>
-                    </div>
-                    <p className="mb-4 text-slate-400">
-                      欢迎通过邮件或 QQ 交流调研心得与合作建议。
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <a
-                        href={`mailto:${footer.email}`}
-                        className="inline-flex items-center gap-2 rounded-md bg-hust px-4 py-2 text-white"
-                      >
-                        <Mail className="h-4 w-4" />
-                        写邮件
-                      </a>
-                      <span className="inline-flex items-center gap-2 rounded-md border border-slate-300 px-4 py-2 text-slate-600 dark:border-slate-700 dark:text-slate-300">
-                        <MessageCircle className="h-4 w-4" />
-                        QQ：{footer.qq}
-                      </span>
-                      <span className="inline-flex items-center gap-2 rounded-md border border-slate-300 px-4 py-2 text-slate-600 dark:border-slate-700 dark:text-slate-300">
-                        <Phone className="h-4 w-4" />
-                        负责人：{footer.leader}
-                      </span>
+                        <span className="inline-flex items-center gap-2 rounded-md border border-slate-300 px-4 py-2 text-slate-600 dark:border-slate-700 dark:text-slate-300">
+                          <Phone className="h-4 w-4" />
+                          负责人：{footer.leader}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </HighlighterItem>
-        </HighlightGroup>
-      </section>
+            </HighlighterItem>
+          </HighlightGroup>
+        </section>
+      )}
 
       <footer className="py-12 px-4 text-foreground">
         <div className="container mx-auto max-w-5xl">
@@ -93,6 +95,12 @@ export function FooterSection() {
               <p className="text-sm text-gray-400 mt-1">{footer.specialName}</p>
               <p className="text-sm text-gray-400 mt-1">
                 所属院系：{footer.college}
+              </p>
+              <p className="text-sm text-gray-400 mt-1">
+                {footer.icp}
+              </p>
+              <p className="text-sm text-gray-400 mt-1">
+                {footer.beian}
               </p>
             </div>
             <div>

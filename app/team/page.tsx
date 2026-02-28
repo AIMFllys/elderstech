@@ -4,6 +4,7 @@ import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { StoryViewer } from "@/components/ui/story-viewer";
 import { teamMembers, instructors } from "@/lib/data";
+import { FooterSection } from "@/components/home/FooterSection";
 
 export default function TeamPage() {
   const orderedMembers = [...teamMembers].sort((a, b) => {
@@ -27,30 +28,87 @@ export default function TeamPage() {
     })),
   ];
 
-  const storyImageUrlsFor = (name: string) => {
-    const encoded = encodeURIComponent(name);
-    const baseUrl =
-      "https://husteread.com/storage/files/elderstech/team.capture.example";
-    return [
-      `${baseUrl}/${encoded}.png`,
-      `${baseUrl}/${encoded}%20-%20%E5%89%AF%E6%9C%AC.jpg`,
-      `${baseUrl}/${encoded}%20-%20%E5%89%AF%E6%9C%AC%20-%20%E5%89%AF%E6%9C%AC.jpg`,
-    ];
+  const storyImageUrlsFor = (name: string): { src: string; type: "image" | "video" }[] => {
+    const imagesMap: Record<string, { src: string; type: "image" | "video" }[]> = {
+      "杨佳怡": [
+        { src: "/实践成果/照片 视频/杨佳怡_6-1.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/杨佳怡_6-2.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/杨佳怡_6-3.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/杨佳怡_6-4.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/杨佳怡_6-5.jpg", type: "image" },
+      ],
+      "何佳欢": [
+        { src: "/实践成果/照片 视频/何佳欢_8-1.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/何佳欢_8-2.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/何佳欢_8-3.jpg", type: "image" },
+      ],
+      "丁文轩": [],
+      "赵梓舒": [
+        { src: "/实践成果/照片 视频/赵梓舒_2-1.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/赵梓舒_2-2.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/赵梓舒_2-3.jpg", type: "image" },
+      ],
+      "李文龙": [
+        { src: "/实践成果/照片 视频/李文龙_4-1.jpg", type: "image" },
+      ],
+      "张星睿": [
+        { src: "/实践成果/照片 视频/张星睿_3-1.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/张星睿_3-2.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/张星睿_3-3.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/张星睿_3-4 老年人照片.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/张星睿_3-5 老年人照片.jpg", type: "image" },
+      ],
+      "罗宇然": [
+        { src: "/实践成果/照片 视频/罗宇然_5-1.png", type: "image" },
+        { src: "/实践成果/照片 视频/罗宇然_5-2.png", type: "image" },
+        { src: "/实践成果/照片 视频/罗宇然_5-3.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/罗宇然_5-4 地点.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/罗宇然_5-5.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/罗宇然_5-6.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/罗宇然_5-7.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/罗宇然_5-8 开头.mp4", type: "video" },
+        { src: "/实践成果/照片 视频/罗宇然_5-9.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/罗宇然_5-10 门口.jpg", type: "image" },
+      ],
+      "周嘉琦": [
+        { src: "/实践成果/照片 视频/周嘉琪_1-1.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/周嘉琪_1-2.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/周嘉琪_1-3.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/周嘉琪_1-4.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/周嘉琪_1-5 地点照片.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/周嘉琪_1-6 医院门口照片.jpg", type: "image" },
+      ],
+      "孔德羽": [
+        { src: "/实践成果/照片 视频/孔德羽开发记录1.png", type: "image" },
+        { src: "/实践成果/照片 视频/孔德羽开发记录2.png", type: "image" },
+        { src: "/实践成果/照片 视频/孔德羽开发记录3.png", type: "image" },
+        { src: "/实践成果/照片 视频/孔德羽开发记录4.png", type: "image" },
+        { src: "/实践成果/照片 视频/孔德羽开发记录5.png", type: "image" },
+      ],
+      "杨静萱": [
+        { src: "/实践成果/照片 视频/杨静萱_7-1.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/杨静萱_7-2.jpg", type: "image" },
+        { src: "/实践成果/照片 视频/杨静萱_7-3 视频.mp4", type: "video" },
+      ]
+    };
+    return imagesMap[name] || [];
   };
 
-  const storyUsers = orderedMembers.map((person, index) => {
-    const [first, second, third] = storyImageUrlsFor(person.name);
-    return {
-      username: person.name,
-      avatar: person.avatar,
-      timestamp: new Date(Date.now() - (index + 1) * 60 * 60 * 1000).toISOString(),
-      stories: [
-        { id: `${person.name}-story-1`, type: "image" as const, src: first },
-        { id: `${person.name}-story-2`, type: "image" as const, src: second },
-        { id: `${person.name}-story-3`, type: "image" as const, src: third },
-      ],
-    };
-  });
+  const storyUsers = orderedMembers
+    .map((person, index) => {
+      const items = storyImageUrlsFor(person.name);
+      return {
+        username: person.name,
+        avatar: person.avatar,
+        timestamp: new Date(Date.now() - (index + 1) * 60 * 60 * 1000).toISOString(),
+        stories: items.map((item, i) => ({
+          id: `${person.name}-story-${i + 1}`,
+          type: item.type,
+          src: item.src,
+        })),
+      };
+    })
+    .filter((user) => user.stories.length > 0);
 
   return (
     <AuroraBackground
@@ -94,6 +152,7 @@ export default function TeamPage() {
             </div>
           </section>
         </div>
+        <FooterSection compact />
       </div>
     </AuroraBackground>
   );

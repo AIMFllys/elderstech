@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { MagnetizeButton } from "@/components/ui/magnetize-button";
 
@@ -22,9 +21,9 @@ export function AppDownloadSection() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Link href="/app-download">
+              <a href="https://www.app.elderstech.husteread.com" target="_blank" rel="noopener noreferrer">
                 <MagnetizeButton icon={ArrowRight}>查看详情</MagnetizeButton>
-              </Link>
+              </a>
             </div>
           </div>
         </div>

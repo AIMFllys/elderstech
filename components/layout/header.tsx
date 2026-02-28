@@ -20,6 +20,7 @@ export function Header() {
       children: [
         { label: "调研数据", href: "#stats" },
         { label: "APP下载", href: "/app-download" },
+        { label: "APP详解", href: "https://www.app.elderstech.husteread.com", external: true },
       ],
     },
     { label: "调研展示", href: "#nav-cards" },
@@ -45,9 +46,10 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-1/2 z-[9999] pointer-events-auto w-full max-w-5xl -translate-x-1/2 md:rounded-md md:transition-all md:ease-out bg-transparent border-b border-transparent md:border md:border-transparent",
-        scrolled && !open && "bg-background/95 backdrop-blur-lg border-border md:shadow",
-        open && "bg-background/90 backdrop-blur-lg"
+        "fixed top-0 md:top-4 left-1/2 z-[9999] pointer-events-auto w-full max-w-5xl -translate-x-1/2 md:rounded-2xl transition-all duration-300 ease-out border",
+        !scrolled && !open && "bg-white/40 dark:bg-black/40 backdrop-blur-md border-white/20 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.04)]",
+        scrolled && !open && "bg-white/70 dark:bg-black/70 backdrop-blur-xl border-black/5 dark:border-white/20 shadow-lg md:max-w-4xl",
+        open && "bg-background/90 backdrop-blur-2xl border-transparent"
       )}
     >
       <nav
@@ -74,6 +76,7 @@ export function Header() {
                     <a
                       key={child.label}
                       href={child.href}
+                      {...(child.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                       className="block px-4 py-2.5 text-sm text-black/90 dark:text-white/90 hover:bg-emerald-500/10 dark:hover:bg-emerald-400/10 transition-colors"
                     >
                       {child.label}
@@ -146,6 +149,7 @@ export function Header() {
                           "text-black/80 dark:text-white/80"
                         )}
                         href={child.href}
+                        {...(child.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                         onClick={handleLinkClick}
                       >
                         {child.label}
