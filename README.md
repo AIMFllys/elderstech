@@ -179,6 +179,10 @@ components/
 - [ ] 页面链接使用尾部斜杠
 - [ ] Node.js 版本 `20.18.0`，使用 npm
 
+## 🙏 致谢
+
+- **UI 设计参考**：部分组件灵感及 UI 设计参考自 [21st.dev](https://21st.dev/)，感谢其提供的优质设计资源。
+
 ## 📄 License
 
 本项目基于 [MIT License](./LICENSE) 开源。
